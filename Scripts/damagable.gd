@@ -1,6 +1,6 @@
-extends ColorRect
+extends Area2D
 
-var has_tower = false
+@export var health = 100.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,8 +11,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func take_damage(_damage):
+	self.health -= _damage
 
-func _on_area_2d_mouse_entered():
-	self.get_parent().active_tile = self
-	#print(self.get_parent().active_tile.position)
-	pass # Replace with function body.
+func die():
+	self.get_parent().queue_free()
+	pass

@@ -1,7 +1,8 @@
-extends ColorRect
+extends Node2D
 
-var has_tower = false
-
+var speed = 20.0
+var health = 100
+var damage = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -9,10 +10,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	self.translate(Vector2(-speed*delta, 0))
 	pass
-
-
-func _on_area_2d_mouse_entered():
-	self.get_parent().active_tile = self
-	#print(self.get_parent().active_tile.position)
-	pass # Replace with function body.

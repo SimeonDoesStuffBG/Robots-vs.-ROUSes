@@ -1,16 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bycoiko15s4xn"]
+[gd_scene load_steps=5 format=3 uid="uid://bycoiko15s4xn"]
 
 [ext_resource type="Script" path="res://Scripts/board.gd" id="1_a0vux"]
 [ext_resource type="PackedScene" uid="uid://c8fgrcnu4i50p" path="res://Scenes/tile.tscn" id="2_536fe"]
+[ext_resource type="PackedScene" uid="uid://cnegsvsxerg82" path="res://Scenes/tower.tscn" id="3_hlsvw"]
+[ext_resource type="PackedScene" uid="uid://bps1ctva2yage" path="res://Scenes/enemy_spawner.tscn" id="4_islbf"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_a0vux")
 tile = ExtResource("2_536fe")
+tower = ExtResource("3_hlsvw")
 light_color = Color(0.262745, 0.262745, 0.486275, 1)
 dark_color = Color(0, 0.443137, 0.615686, 1)
 
+[node name="enemy_spawner" parent="." instance=ExtResource("4_islbf")]
+position = Vector2(250, 0)
+
 [node name="Game Manager" type="Node" parent="."]
 
+[node name="Interface" type="Node2D" parent="Game Manager"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Manager/Interface"]
+offset_left = -147.0
+offset_top = -125.0
+offset_right = 257.0
+offset_bottom = -92.0
+theme_override_constants/separation = 2
+
+[node name="Button" type="Button" parent="Game Manager/Interface/HBoxContainer"]
+layout_mode = 2
+text = "Tower"
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(6, -13)
-zoom = Vector2(3.25, 3.25)
+position = Vector2(6, -20)
+zoom = Vector2(3, 3)
+
+[connection signal="pressed" from="Game Manager/Interface/HBoxContainer/Button" to="." method="_on_button_pressed"]

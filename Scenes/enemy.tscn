@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc3d53wdb6mye"]
+
+[ext_resource type="Texture2D" uid="uid://brd5i6wvntetn" path="res://Assets/Sprites/Jason.png" id="1_7nxt0"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_surcq"]
+[ext_resource type="PackedScene" uid="uid://te7qdyg4j78f" path="res://Scenes/damagable.tscn" id="3_6frx5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpwey"]
+radius = 6.0
+height = 16.0
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_surcq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(-0.5, 0.5)
+texture = ExtResource("1_7nxt0")
+
+[node name="Damagable" parent="." instance=ExtResource("3_6frx5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_gpwey")

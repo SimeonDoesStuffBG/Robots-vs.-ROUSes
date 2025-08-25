@@ -1,7 +1,7 @@
-extends ColorRect
+extends Area2D
 
-var has_tower = false
-
+@export var target:PackedScene
+@export var damage = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,9 +10,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-func _on_area_2d_mouse_entered():
-	self.get_parent().active_tile = self
-	#print(self.get_parent().active_tile.position)
-	pass # Replace with function body.
+func deal_damage():
+	target.take_damage(damage)
