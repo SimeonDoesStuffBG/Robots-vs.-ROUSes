@@ -1,7 +1,6 @@
-extends Area2D
+extends Node2D
 
-@export var target:PackedScene
-@export var damage = 10
+var speed = 40;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -9,6 +8,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	self.translate(Vector2.RIGHT * speed * delta)
 	pass
-func deal_damage():
-	target.take_damage(damage)
+
+
+func _on_damage_zone_dealing_damage():
+	self.queue_free();
+	pass # Replace with function body.

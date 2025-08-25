@@ -1,7 +1,8 @@
-extends Node2D
+class_name DamageZone
+extends Area2D
 
-var speed = 20.0
-var moving = true;
+@export var damage = 10
+signal dealing_damage
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -9,12 +10,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if moving:
-		self.translate(Vector2(-speed*delta, 0))
 	pass
+	
+func deal_damage(target):
+	target.take_damage(damage)
 
-
-func _on_damage_zone_dealing_damage():
-	print("asdsd")
-	moving=false;
+func _on_body_entered(body):
+	print("Meep")
+	deal_damage(body)
+	emit_signal("dealing_damage")
 	pass # Replace with function body.

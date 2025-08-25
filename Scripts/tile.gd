@@ -1,6 +1,9 @@
 extends ColorRect
 
-var has_tower = false
+var tower
+var has_tower : bool :
+	get:
+		return self.tower != null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,4 +18,10 @@ func _process(delta):
 func _on_area_2d_mouse_entered():
 	self.get_parent().active_tile = self
 	#print(self.get_parent().active_tile.position)
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_exited():
+	if(self.get_parent().active_tile==self):
+		self.get_parent().active_tile = null
 	pass # Replace with function body.

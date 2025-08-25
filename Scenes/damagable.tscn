@@ -3,5 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/damagable.gd" id="1_shl26"]
 
 [node name="Damagable" type="Area2D"]
-collision_layer = 2
 script = ExtResource("1_shl26")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

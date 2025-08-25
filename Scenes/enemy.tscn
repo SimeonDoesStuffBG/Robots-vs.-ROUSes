@@ -1,18 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc3d53wdb6mye"]
+[gd_scene load_steps=7 format=3 uid="uid://bc3d53wdb6mye"]
 
 [ext_resource type="Texture2D" uid="uid://brd5i6wvntetn" path="res://Assets/Sprites/Jason.png" id="1_7nxt0"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_surcq"]
 [ext_resource type="PackedScene" uid="uid://te7qdyg4j78f" path="res://Scenes/damagable.tscn" id="3_6frx5"]
+[ext_resource type="PackedScene" uid="uid://dlpt51x20jr0q" path="res://Scenes/damage_zone.tscn" id="4_q12d4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpwey"]
 radius = 6.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgvjs"]
+size = Vector2(11, 16)
+
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_surcq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(-0.5, 0.5)
+rotation = -3.14159
+scale = Vector2(0.5, -0.5)
 texture = ExtResource("1_7nxt0")
 
 [node name="Damagable" parent="." instance=ExtResource("3_6frx5")]
@@ -20,3 +25,11 @@ texture = ExtResource("1_7nxt0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_gpwey")
+
+[node name="damage_zone" parent="." instance=ExtResource("4_q12d4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
+position = Vector2(-5.5, 1)
+shape = SubResource("RectangleShape2D_fgvjs")
+
+[connection signal="dealing_damage" from="damage_zone" to="." method="_on_damage_zone_dealing_damage"]

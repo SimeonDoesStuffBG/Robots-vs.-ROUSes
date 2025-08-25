@@ -52,6 +52,7 @@ func create_tower():
 	var tower_object = tower.instantiate()
 	tower_object.position = active_tile.position + Vector2(node_size/2, node_size/2)
 	add_child(tower_object)
+	active_tile.tower = tower_object
 	pass
 
 func _on_button_pressed():
@@ -60,9 +61,10 @@ func _on_button_pressed():
 func _input(event):
 	if Input.is_action_just_pressed("left_click") && active_tile != null:
 		if not active_tile.has_tower:
-			print("Hello there")
 			create_tower()
-			active_tile.has_tower = true;
-		else:
-			print("General Kenobi")
+	
+	if Input.is_action_just_pressed("right_click") && active_tile != null:
+		if active_tile.has_tower:
+			active_tile.tower.queue_free()
+			active_tile.tower = null
 	pass

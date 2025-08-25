@@ -1,3 +1,4 @@
+class_name Damagable
 extends Area2D
 
 @export var health = 100.0
@@ -13,7 +14,18 @@ func _process(delta):
 
 func take_damage(_damage):
 	self.health -= _damage
+	if(self.health <= 0):
+		die()
 
 func die():
 	self.get_parent().queue_free()
 	pass
+
+
+
+func _on_body_entered(body):
+	if body.name=="DamageZone":
+		print("meow")
+		take_damage(body.damage)
+		
+	pass # Replace with function body.
