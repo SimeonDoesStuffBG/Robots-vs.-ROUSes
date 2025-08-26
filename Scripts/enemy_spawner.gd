@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var enemy:PackedScene
+@onready var timer = $Timer
 
 var enemies: int
 var column_height: float
@@ -18,6 +19,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	spawn_enemy()
+	timer.wait_time=randf_range(7.5,10.0)
 	pass # Replace with function body.
 
 func initialize(_enemies, _column_height):

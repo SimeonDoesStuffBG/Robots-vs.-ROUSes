@@ -1,7 +1,7 @@
 extends Node2D
 
-var speed = 20.0
-var moving = true;
+@onready var TowerDetector = $RayCast2D
+var speed = 20
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -9,12 +9,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if moving:
-		self.translate(Vector2(-speed*delta, 0))
+	self.translate(Vector2.LEFT * speed * delta)
 	pass
 
 
-func _on_damage_zone_dealing_damage():
-	print("asdsd")
-	moving=false;
+func _on_area_2d_body_entered(body):
+	print("I am the globglobgabgalab")
 	pass # Replace with function body.
