@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var enemy_spawner = $enemy_spawner
+
 var node_size = 34.0
 var margin = 2.0
 var node_space:float :
@@ -15,14 +17,14 @@ var node_space:float :
 @export var light_color:Color
 @export var dark_color:Color
 var active_tile
-var enemy_spawner
+
+var towerDetectionLimit:float
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	enemy_spawner = self.get_child(0)
 	enemy_spawner.initialize(height,node_space)
 	
 	var bottom_left = Vector2(-width * node_space / 2, -height * node_space / 2)
-	
+	towerDetectionLimit = bottom_left.x + (width+1) * node_space
 	for i in height:
 		var y_offset = i * node_space
 		for j in width:
@@ -50,7 +52,9 @@ func _process(delta):
 	
 func create_tower():
 	var tower_object = tower.instantiate()
-	tower_object.position = active_tile.position + Vector2(node_size/2, node_size/2)
+	tower_object.position = active_tile.position + Vector2(node_size/2, node_size/2) 
+	tower_object.ray_length = towerDetectionLimit - tower_object.position.x
+
 	add_child(tower_object)
 	active_tile.tower = tower_object
 	pass
@@ -59,12 +63,18 @@ func _on_button_pressed():
 	pass # Replace with function body.
 
 func _input(event):
-	if Input.is_action_just_pressed("left_click") && active_tile != null:
-		if not active_tile.has_tower:
-			create_tower()
+	if(active_tile!=null):
+		if Input.is_action_just_pressed("left_click"):
+			if not active_tile.has_tower:
+				create_tower()
 	
-	if Input.is_action_just_pressed("right_click") && active_tile != null:
-		if active_tile.has_tower:
-			active_tile.tower.queue_free()
-			active_tile.tower = null
+		if Input.is_action_just_pressed("right_click"):
+			if active_tile.has_tower:
+				active_tile.tower.queue_free()
+				active_tile.tower = null
 	pass
+
+
+func _on_bullet_limit_body_entered(body):
+	body.queue_free()
+	pass # Replace with function body.

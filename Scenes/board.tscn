@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bycoiko15s4xn"]
+[gd_scene load_steps=6 format=3 uid="uid://bycoiko15s4xn"]
 
 [ext_resource type="Script" path="res://Scripts/board.gd" id="1_a0vux"]
 [ext_resource type="PackedScene" uid="uid://c8fgrcnu4i50p" path="res://Scenes/tile.tscn" id="2_536fe"]
 [ext_resource type="PackedScene" uid="uid://q4y67gpfsekk" path="res://Scenes/tower.tscn" id="3_hlsvw"]
 [ext_resource type="PackedScene" uid="uid://bps1ctva2yage" path="res://Scenes/enemy_spawner.tscn" id="4_islbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkgwq"]
+size = Vector2(20, 216)
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_a0vux")
@@ -12,8 +15,17 @@ tower = ExtResource("3_hlsvw")
 light_color = Color(0.262745, 0.262745, 0.486275, 1)
 dark_color = Color(0, 0.443137, 0.615686, 1)
 
+[node name="Bullet limit" type="Area2D" parent="."]
+position = Vector2(209, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet limit"]
+position = Vector2(-1, -20)
+shape = SubResource("RectangleShape2D_kkgwq")
+
 [node name="enemy_spawner" parent="." instance=ExtResource("4_islbf")]
-position = Vector2(250, 0)
+position = Vector2(247, 1)
 
 [node name="Game Manager" type="Node" parent="."]
 
@@ -34,4 +46,5 @@ text = "Tower"
 position = Vector2(6, -20)
 zoom = Vector2(3, 3)
 
+[connection signal="body_entered" from="Bullet limit" to="." method="_on_bullet_limit_body_entered"]
 [connection signal="pressed" from="Game Manager/Interface/HBoxContainer/Button" to="." method="_on_button_pressed"]
