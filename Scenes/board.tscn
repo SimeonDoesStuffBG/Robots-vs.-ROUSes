@@ -1,17 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bycoiko15s4xn"]
+[gd_scene load_steps=9 format=3 uid="uid://bycoiko15s4xn"]
 
 [ext_resource type="Script" path="res://Scripts/board.gd" id="1_a0vux"]
-[ext_resource type="PackedScene" uid="uid://c8fgrcnu4i50p" path="res://Scenes/tile.tscn" id="2_536fe"]
 [ext_resource type="PackedScene" uid="uid://q4y67gpfsekk" path="res://Scenes/tower.tscn" id="3_hlsvw"]
+[ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="4_0abol"]
 [ext_resource type="PackedScene" uid="uid://bps1ctva2yage" path="res://Scenes/enemy_spawner.tscn" id="4_islbf"]
+[ext_resource type="PackedScene" uid="uid://do5xtljuw504i" path="res://Scenes/tower_picker.tscn" id="4_p76dt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkgwq"]
 size = Vector2(20, 216)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fliv1"]
+bg_color = Color(0.905882, 0.909804, 0.745098, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53uh4"]
+size = Vector2(33, 216)
+
 [node name="Board" type="Node2D"]
 script = ExtResource("1_a0vux")
-tile = ExtResource("2_536fe")
-tower = ExtResource("3_hlsvw")
 light_color = Color(0.262745, 0.262745, 0.486275, 1)
 dark_color = Color(0, 0.443137, 0.615686, 1)
 
@@ -28,23 +33,71 @@ shape = SubResource("RectangleShape2D_kkgwq")
 position = Vector2(247, 1)
 
 [node name="Game Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_0abol")
 
-[node name="Interface" type="Node2D" parent="Game Manager"]
+[node name="Interface" type="Control" parent="Game Manager"]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Manager/Interface"]
-offset_left = -147.0
+[node name="TowerButtons" type="HBoxContainer" parent="Game Manager/Interface"]
+layout_mode = 0
+offset_left = -149.0
 offset_top = -125.0
-offset_right = 257.0
-offset_bottom = -92.0
+offset_right = 188.0
+offset_bottom = -85.0
+scale = Vector2(0.75, 0.75)
 theme_override_constants/separation = 2
 
-[node name="Button" type="Button" parent="Game Manager/Interface/HBoxContainer"]
+[node name="TowerPicker" parent="Game Manager/Interface/TowerButtons" instance=ExtResource("4_p76dt")]
 layout_mode = 2
-text = "Tower"
+tower = ExtResource("3_hlsvw")
+
+[node name="TowerPicker2" parent="Game Manager/Interface/TowerButtons" instance=ExtResource("4_p76dt")]
+layout_mode = 2
+tower = ExtResource("3_hlsvw")
+
+[node name="MoneyLabel" type="Label" parent="Game Manager/Interface"]
+layout_mode = 0
+offset_left = -180.0
+offset_top = -124.0
+offset_right = -153.0
+offset_bottom = -101.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Game Manager/Interface"]
+layout_mode = 0
+offset_left = -104.0
+offset_top = -68.0
+offset_right = 103.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fliv1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Manager/Interface/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Game Manager/Interface/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Game Manager/Interface/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 8.15
+text = "Retry"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6, -20)
 zoom = Vector2(3, 3)
 
+[node name="Enemy Goal" type="Area2D" parent="."]
+position = Vector2(-227, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Goal"]
+position = Vector2(6.5, -20)
+shape = SubResource("RectangleShape2D_53uh4")
+
 [connection signal="body_entered" from="Bullet limit" to="." method="_on_bullet_limit_body_entered"]
-[connection signal="pressed" from="Game Manager/Interface/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Game Manager/Interface/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="area_entered" from="Enemy Goal" to="." method="_on_enemy_goal_area_entered"]

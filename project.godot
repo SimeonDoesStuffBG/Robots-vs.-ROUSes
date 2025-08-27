@@ -37,6 +37,8 @@ right_click={
 2d_physics/layer_1="Tower"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Projectile"
+2d_physics/layer_4="Tiles"
+2d_physics/layer_5="Currency"
 
 [rendering]
 

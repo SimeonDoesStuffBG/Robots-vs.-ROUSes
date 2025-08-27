@@ -11,8 +11,8 @@ offset_bottom = 34.0
 script = ExtResource("1_y62qw")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
 collision_mask = 0
-priority = 455
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(17, 17)

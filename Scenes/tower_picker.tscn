@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://do5xtljuw504i"]
+
+[ext_resource type="Script" path="res://Scripts/tower_picker.gd" id="1_buvi7"]
+
+[node name="TowerPicker" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+action_mode = 0
+script = ExtResource("1_buvi7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true

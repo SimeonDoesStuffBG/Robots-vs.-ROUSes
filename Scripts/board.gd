@@ -1,6 +1,11 @@
 extends Node2D
 
 @onready var enemy_spawner = $enemy_spawner
+@onready var tower_buttons = $"Game Manager/Interface/TowerButtons"
+@onready var game_manager = %"Game Manager"
+@onready var panel_container = $"Game Manager/Interface/PanelContainer"
+const final_line = preload("res://Scenes/final_line.tscn")
+const tile = preload("res://Scenes/tile.tscn")
 
 var node_size = 34.0
 var margin = 2.0
@@ -11,18 +16,62 @@ var node_space:float :
 @export var height = 5
 @export var width = 9
 
-@export var tile:PackedScene
-@export var tower:PackedScene
+var tower:PackedScene
 
 @export var light_color:Color
 @export var dark_color:Color
 var active_tile
+var picked_button
 
 var towerDetectionLimit:float
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	panel_container.visible = false
 	enemy_spawner.initialize(height,node_space)
+	generate_board()
 	
+	for button in tower_buttons.get_children():
+		if button.has_signal("tower_picked"):
+			button.tower_picked.connect(_pick_tower)
+	
+	
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+func create_tower():
+	var tower_object = tower.instantiate()
+	tower_object.position = active_tile.position + Vector2(node_size/2, node_size/2) 
+	tower_object.ray_length = towerDetectionLimit - tower_object.position.x
+
+	add_child(tower_object)
+	active_tile.tower = tower_object
+	game_manager.change_money(tower_object.stats.price,false)
+	self.tower = null
+	self.picked_button.disabled = true
+	self.picked_button.cooldown()
+	self.picked_button = null
+	pass
+
+
+func _input(event):
+	if active_tile==null:
+		return
+		
+	if Input.is_action_just_pressed("left_click") and tower!=null:
+		if not active_tile.has_tower:
+			create_tower()
+	
+	if Input.is_action_just_pressed("right_click"):
+		if active_tile.has_tower:
+			active_tile.tower.queue_free()
+			active_tile.tower = null
+	pass
+
+func generate_board():
 	var bottom_left = Vector2(-width * node_space / 2, -height * node_space / 2)
 	towerDetectionLimit = bottom_left.x + (width+1) * node_space
 	for i in height:
@@ -42,39 +91,37 @@ func _ready():
 				tile_node.color = dark_color
 			
 			add_child(tile_node)
-	
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+		
+		var final_line_x = -node_space / 4
+		var final_line_y = y_offset + node_space/2
+		var final_line_pos = bottom_left + Vector2(final_line_x, final_line_y)
+		var final_line_obj = final_line.instantiate()
+		final_line_obj.position = final_line_pos
+		add_child(final_line_obj)
 	pass
-	
-func create_tower():
-	var tower_object = tower.instantiate()
-	tower_object.position = active_tile.position + Vector2(node_size/2, node_size/2) 
-	tower_object.ray_length = towerDetectionLimit - tower_object.position.x
-
-	add_child(tower_object)
-	active_tile.tower = tower_object
-	pass
-
-func _on_button_pressed():
-	pass # Replace with function body.
-
-func _input(event):
-	if(active_tile!=null):
-		if Input.is_action_just_pressed("left_click"):
-			if not active_tile.has_tower:
-				create_tower()
-	
-		if Input.is_action_just_pressed("right_click"):
-			if active_tile.has_tower:
-				active_tile.tower.queue_free()
-				active_tile.tower = null
-	pass
-
 
 func _on_bullet_limit_body_entered(body):
 	body.queue_free()
+	pass # Replace with function body.
+
+func _pick_tower(button, tower):
+	if self.tower!=tower:
+		self.picked_button = button
+		self.tower = tower
+	else:
+		self.picked_button.release_focus()
+		self.picked_button = null
+		self.tower = null
+	pass # Replace with function body.
+
+
+func _on_enemy_goal_area_entered(area):
+	Engine.time_scale = 0
+	panel_container.visible = true
+	pass # Replace with function body.
+
+
+func _on_button_pressed():
+	Engine.time_scale = 1
+	get_tree().reload_current_scene()
 	pass # Replace with function body.

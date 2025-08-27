@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://3r34jqh1x127"]
+
+[ext_resource type="Texture2D" uid="uid://bcond2ijg8uh2" path="res://Assets/Sprites/ReaperGB.png" id="1_fkrky"]
+[ext_resource type="Script" path="res://Scripts/final_line.gd" id="1_nidth"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4uyp"]
+atlas = ExtResource("1_fkrky")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2eov"]
+atlas = ExtResource("1_fkrky")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l4gs"]
+atlas = ExtResource("1_fkrky")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dty25"]
+atlas = ExtResource("1_fkrky")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mcmf5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4uyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2eov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l4gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dty25")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_geo3y"]
+size = Vector2(12, 16)
+
+[node name="Final Line" type="Node2D"]
+script = ExtResource("1_nidth")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mcmf5")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_geo3y")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

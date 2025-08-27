@@ -1,22 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d22rljp3gq4jw"]
 
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_mn4jg"]
 [ext_resource type="Texture2D" uid="uid://bn2q1xwvn1yv" path="res://Assets/Sprites/Bee.png" id="2_g3pfd"]
-
-[sub_resource type="GDScript" id="GDScript_y7pyd"]
-script/source = "extends CharacterBody2D
-
-@export var speed = 70
-@export var damage = 10
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	self.translate(Vector2.RIGHT * speed * delta)
-	pass
-"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_58ysg"]
 radius = 3.0
@@ -24,7 +9,7 @@ radius = 3.0
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
-script = SubResource("GDScript_y7pyd")
+script = ExtResource("1_mn4jg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_58ysg")
