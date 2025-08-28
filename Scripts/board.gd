@@ -4,11 +4,12 @@ extends Node2D
 @onready var tower_buttons = $"Game Manager/Interface/TowerButtons"
 @onready var game_manager = %"Game Manager"
 @onready var panel_container = $"Game Manager/Interface/PanelContainer"
+@onready var pause_scene = $"Game Manager/Interface/pause_scene"
 const final_line = preload("res://Scenes/final_line.tscn")
 const tile = preload("res://Scenes/tile.tscn")
 
-var node_size = 34.0
-var margin = 2.0
+var node_size = Global.tile_size
+var margin = Global.tile_margin
 var node_space:float :
 	get:
 		return node_size+margin
@@ -18,8 +19,6 @@ var node_space:float :
 
 var tower:PackedScene
 
-@export var light_color:Color
-@export var dark_color:Color
 var active_tile
 var picked_button
 
@@ -45,7 +44,7 @@ func _process(delta):
 func create_tower():
 	var tower_object = tower.instantiate()
 	tower_object.position = active_tile.position + Vector2(node_size/2, node_size/2) 
-	tower_object.ray_length = towerDetectionLimit - tower_object.position.x
+	tower_object.range = towerDetectionLimit - tower_object.position.x
 
 	add_child(tower_object)
 	active_tile.tower = tower_object
@@ -85,11 +84,6 @@ func generate_board():
 			tile_node.position = pos
 			tile_node.size = Vector2(node_size, node_size)
 			
-			if i%2==j%2:
-				tile_node.color = light_color 
-			else: 
-				tile_node.color = dark_color
-			
 			add_child(tile_node)
 		
 		var final_line_x = -node_space / 4
@@ -114,7 +108,6 @@ func _pick_tower(button, tower):
 		self.tower = null
 	pass # Replace with function body.
 
-
 func _on_enemy_goal_area_entered(area):
 	Engine.time_scale = 0
 	panel_container.visible = true
@@ -124,4 +117,10 @@ func _on_enemy_goal_area_entered(area):
 func _on_button_pressed():
 	Engine.time_scale = 1
 	get_tree().reload_current_scene()
+	pass # Replace with function body.
+
+
+func _on_pause_button_pressed():
+	Engine.time_scale = 0
+	pause_scene.visible = true
 	pass # Replace with function body.

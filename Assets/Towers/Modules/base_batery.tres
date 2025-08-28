@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Batery" load_steps=2 format=3 uid="uid://b56pp3gscmrjj"]
+
+[ext_resource type="Script" path="res://Scripts/Scriptable Objects/Modules/batery.gd" id="1_sk8nc"]
+
+[resource]
+script = ExtResource("1_sk8nc")
+charge = 100
+health = 10.0
+price = 8
+cooldown = 2.0

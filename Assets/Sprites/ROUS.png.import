@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brd5i6wvntetn"
-path="res://.godot/imported/Jason.png-752971d3ff7f5723d62743bacc55699e.ctex"
+uid="uid://d3saugtj6ce6v"
+path="res://.godot/imported/ROUS.png-e82eee53ff599c85982d311ea49f54e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Jason.png"
-dest_files=["res://.godot/imported/Jason.png-752971d3ff7f5723d62743bacc55699e.ctex"]
+source_file="res://Assets/Sprites/ROUS.png"
+dest_files=["res://.godot/imported/ROUS.png-e82eee53ff599c85982d311ea49f54e2.ctex"]
 
 [params]
 

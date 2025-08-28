@@ -10,6 +10,7 @@ var damage = 10
 var moving = true
 
 var target:Node2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 var attacking:
 	set(value):
@@ -26,12 +27,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if moving:
+		animated_sprite_2d.play("Walk")
 		self.translate(Vector2.LEFT * speed * delta)
 		
 	if tower_detector.is_colliding():
 		if not attacking:
 			target = tower_detector.get_collider().get_parent()
 			attacking = true
+			animated_sprite_2d.play("Attack")
 			timer.start(.1)
 	else:
 		attacking = false

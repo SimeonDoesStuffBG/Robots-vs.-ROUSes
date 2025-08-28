@@ -1,14 +1,10 @@
-[gd_resource type="Resource" script_class="DamageTower" load_steps=4 format=3 uid="uid://cals6wvcylx6y"]
+[gd_resource type="Resource" script_class="Tower" load_steps=4 format=3 uid="uid://bsbowx0jei3ef"]
 
-[ext_resource type="Script" path="res://Scripts/Scriptable Objects/damage_tower.gd" id="1_hu11d"]
-[ext_resource type="Texture2D" uid="uid://cbn0q6tmt8or1" path="res://Assets/Sprites/Reaper.png" id="1_konky"]
-[ext_resource type="PackedScene" uid="uid://d22rljp3gq4jw" path="res://Scenes/projectile.tscn" id="1_linwv"]
+[ext_resource type="Script" path="res://Scripts/Scriptable Objects/tower.gd" id="1_mt3ng"]
+[ext_resource type="Resource" uid="uid://b56pp3gscmrjj" path="res://Assets/Towers/Modules/base_batery.tres" id="1_o6gp3"]
+[ext_resource type="Resource" uid="uid://cwefvcw3xeyu6" path="res://Assets/Towers/Modules/base_mechanic.tres" id="2_7rcqy"]
 
 [resource]
-script = ExtResource("1_hu11d")
-projectile = ExtResource("1_linwv")
-shoot_speed = 1
-health = 100.0
-price = 64
-cooldown = 5.0
-icon = ExtResource("1_konky")
+script = ExtResource("1_mt3ng")
+battery = ExtResource("1_o6gp3")
+mechanic = ExtResource("2_7rcqy")

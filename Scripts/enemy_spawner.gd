@@ -19,7 +19,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	spawn_enemy()
-	timer.wait_time=randf_range(7.5,10.0)
+	timer.wait_time=randf_range(1.0,2.5)
 	pass # Replace with function body.
 
 func initialize(_enemies, _column_height):

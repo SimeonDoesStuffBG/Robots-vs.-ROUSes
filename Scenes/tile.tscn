@@ -8,6 +8,7 @@ size = Vector2(34, 34)
 [node name="Tile" type="ColorRect"]
 offset_right = 34.0
 offset_bottom = 34.0
+color = Color(1, 1, 1, 0.760784)
 script = ExtResource("1_y62qw")
 
 [node name="Area2D" type="Area2D" parent="."]
