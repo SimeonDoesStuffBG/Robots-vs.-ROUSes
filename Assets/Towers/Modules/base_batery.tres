@@ -7,4 +7,4 @@ script = ExtResource("1_sk8nc")
 charge = 100
 health = 10.0
 price = 8
-cooldown = 2.0
+cooldown = 15.0

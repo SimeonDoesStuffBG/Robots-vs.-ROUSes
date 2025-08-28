@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://drm4f74v2gnms"]
+
+[ext_resource type="Script" path="res://Scripts/explosive.gd" id="1_awppy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v87gh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7kdj"]
+
+[node name="Explosive" type="Node2D"]
+script = ExtResource("1_awppy")
+
+[node name="ExplosionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRange"]
+shape = SubResource("CircleShape2D_v87gh")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="TriggerRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerRange"]
+shape = SubResource("CircleShape2D_m7kdj")
+
+[connection signal="area_entered" from="ExplosionRange" to="." method="_on_explosion_range_area_entered"]
+[connection signal="area_exited" from="ExplosionRange" to="." method="_on_explosion_range_area_exited"]
+[connection signal="area_entered" from="TriggerRange" to="." method="_on_trigger_range_area_entered"]
