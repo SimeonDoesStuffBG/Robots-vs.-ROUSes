@@ -1,46 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://q4y67gpfsekk"]
+[gd_scene load_steps=3 format=3 uid="uid://b517fwj5ngiae"]
 
 [ext_resource type="Script" path="res://Scripts/tower.gd" id="1_nwlv8"]
-[ext_resource type="Texture2D" uid="uid://cbn0q6tmt8or1" path="res://Assets/Sprites/Reaper.png" id="1_ok0lj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qf7ck"]
-atlas = ExtResource("1_ok0lj")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqq1t"]
+size = Vector2(15, 26)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yor08"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qf7ck")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s01p8"]
-size = Vector2(11, 16)
-
-[node name="Tower" type="Node2D"]
+[node name="tower" type="Node2D"]
 script = ExtResource("1_nwlv8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_yor08")
-
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_s01p8")
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_aqq1t")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(5, 0)
-target_position = Vector2(100, 0)
-collision_mask = 2
-hit_from_inside = true
-collide_with_areas = true
+[node name="Legs" type="Node2D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Head" type="Node2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(0, -5)
+
+[node name="Hands" type="Node2D" parent="."]
+position = Vector2(3, -7.5)
+
+[node name="Batery" type="Node2D" parent="."]
+position = Vector2(0, -7.5)
+
+[node name="Mechanic" type="Node2D" parent="."]
+position = Vector2(-2.5, 0)
+
+[node name="RepairTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]

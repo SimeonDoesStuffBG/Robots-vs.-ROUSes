@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=3 uid="uid://g67ylbxcpgcp"]
+
+[ext_resource type="Script" path="res://Scripts/module_picker.gd" id="1_u1gpl"]
+
+[node name="ModulePicker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u1gpl")
+
+[node name="Modules" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 303.0
+offset_bottom = 274.0
+columns = 3
+
+[node name="Heads" type="Control" parent="Modules"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modules/Heads"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Heads"
+
+[node name="GridContainer" type="GridContainer" parent="Modules/Heads"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Bodies" type="Control" parent="Modules"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modules/Bodies"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Bodies"
+
+[node name="GridContainer" type="GridContainer" parent="Modules/Bodies"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Hands" type="Control" parent="Modules"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modules/Hands"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hands"
+
+[node name="GridContainer" type="GridContainer" parent="Modules/Hands"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Legs" type="Control" parent="Modules"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modules/Legs"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Legs"
+
+[node name="GridContainer" type="GridContainer" parent="Modules/Legs"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Batteries" type="Control" parent="Modules"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modules/Batteries"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Batteries"
+
+[node name="GridContainer" type="GridContainer" parent="Modules/Batteries"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Mechanics" type="Control" parent="Modules"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modules/Mechanics"]
+layout_mode = 0
+offset_right = 407.0
+offset_bottom = 268.0
+text = "Mechanics"
+
+[node name="GridContainer" type="GridContainer" parent="Modules/Mechanics"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=3 format=3 uid="uid://d0wm8a6wmbp2o"]
+
+[ext_resource type="Script" path="res://Scripts/Scriptable Objects/projectile.gd" id="1_2vrqd"]
+[ext_resource type="Texture2D" uid="uid://s0rqs0ytoad3" path="res://Assets/Sprites/bullet.png" id="2_4o0lg"]
+
+[resource]
+script = ExtResource("1_2vrqd")
+speed = 100
+damage = 10
+is_explosive = false
+explosive_radius = 1.5
+sprite = ExtResource("2_4o0lg")

@@ -57,7 +57,7 @@ func take_damage(damage):
 func die():
 	var bolts = currency_pack.instantiate()
 	bolts.position = position
-	bolts.game_manager = get_parent().get_node("Game Manager")
+	bolts.game_manager = get_parent().game_manager
 	self.get_parent().add_child(bolts)
 	self.queue_free()
 

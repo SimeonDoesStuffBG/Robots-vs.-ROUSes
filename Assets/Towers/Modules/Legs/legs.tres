@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=5 format=3 uid="uid://bykuiaxnmthqk"]
+
+[ext_resource type="Script" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_5xbk6"]
+[ext_resource type="Texture2D" uid="uid://bcond2ijg8uh2" path="res://Assets/Sprites/ReaperGB.png" id="1_vvrjl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1hbs"]
+atlas = ExtResource("1_vvrjl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbdhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1hbs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_5xbk6")
+wall_health = 1000
+health = 10.0
+price = 16
+cooldown = 15.0
+animation = SubResource("SpriteFrames_mbdhh")

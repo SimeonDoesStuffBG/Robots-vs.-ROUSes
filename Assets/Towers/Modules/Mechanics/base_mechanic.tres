@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="Mechanic" load_steps=12 format=3 uid="uid://cwefvcw3xeyu6"]
+
+[ext_resource type="Script" path="res://Scripts/Scriptable Objects/Modules/mechanic.gd" id="1_b8r70"]
+[ext_resource type="Texture2D" uid="uid://d4i04kl2yk782" path="res://Assets/Sprites/mechanic_spritesheet.png" id="1_ibqcl"]
+[ext_resource type="Texture2D" uid="uid://chwjurqda3305" path="res://Assets/Sprites/mechanic_icon.png" id="2_3qltp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6d1o"]
+atlas = ExtResource("1_ibqcl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gojdd"]
+atlas = ExtResource("1_ibqcl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmo76"]
+atlas = ExtResource("1_ibqcl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qafyl"]
+atlas = ExtResource("1_ibqcl")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfony"]
+atlas = ExtResource("1_ibqcl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i44jk"]
+atlas = ExtResource("1_ibqcl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ft8n"]
+atlas = ExtResource("1_ibqcl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_teuk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6d1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gojdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmo76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qafyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gojdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6d1o")
+}],
+"loop": true,
+"name": &"fixing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfony")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i44jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ft8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i44jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfony")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_b8r70")
+speed = 10
+thoroughness = 1.0
+health = 10.0
+price = 8
+cooldown = 2.0
+icon = ExtResource("2_3qltp")
+animation = SubResource("SpriteFrames_teuk8")

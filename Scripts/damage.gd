@@ -7,10 +7,11 @@ var range:float
 var shooting = false
 
 var projectile:
-	get: return stats.projectile
+	get: return self.stats.projectile
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(stats is Damage, "The module must be damage")
+	super._ready()
 	self.range = min(get_parent().range,stats.range*Global.tile_space)
 	enemy_detector.target_position.x = range
 	pass # Replace with function body.
@@ -27,14 +28,15 @@ func _process(delta):
 	pass
 
 func shoot():
-	var bullet = projectile.instantiate()
-	bullet.position = position
-	get_tree().get_root().add_child(bullet)
+	var bullet = projectile.instantiate(self.global_position)
+	get_parent().board.add_child(bullet)
+	drain_power(stats.energy_drain)
 	if shooting:
 		timer.start(stats.shoot_speed)
 	pass
 	
 
 func _on_timer_timeout():
-	shoot()
+	if has_power:
+		shoot()
 	pass # Replace with function body.

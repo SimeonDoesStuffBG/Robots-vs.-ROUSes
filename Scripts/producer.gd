@@ -6,6 +6,7 @@ var resource:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(stats is Producer, "Module must be a producer")
+	super._ready()
 	timer.start(stats.initial_delay)
 	pass # Replace with function body.
 
@@ -16,10 +17,13 @@ func _process(delta):
 
 func produce():
 	var bolts = resource.instantiate()
-	bolts.position = position
-	get_tree().get_root().add_child(bolts)
+	bolts.position = global_position
+	bolts.game_manager = get_parent().board.game_manager
+	drain_power(stats.energy_drain)
+	get_parent().board.add_child(bolts)
 	timer.start(stats.produce_delay)
 
 func _on_timer_timeout():
-	produce()
+	if has_power:
+		produce()
 	pass # Replace with function body.

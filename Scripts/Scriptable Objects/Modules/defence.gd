@@ -1,8 +1,9 @@
 class_name Defence
-extends Module
+extends WorkingModule
 
-@export var wall_health = 1000
+@export var wall_health = 200.0
 
 func _init():
-	scene = preload("res://Scenes/defence.tscn")
-	health += wall_health
+	self.health += wall_health
+	self.scene = preload("res://Scenes/defence.tscn")
+

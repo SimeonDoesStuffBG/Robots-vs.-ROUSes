@@ -34,3 +34,8 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	is_selected = false
 	pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	self.queue_free()
+	pass # Replace with function body.

@@ -1,10 +1,8 @@
 extends Node2D
 
 @onready var enemy_spawner = $enemy_spawner
-@onready var tower_buttons = $"Game Manager/Interface/TowerButtons"
-@onready var game_manager = %"Game Manager"
-@onready var panel_container = $"Game Manager/Interface/PanelContainer"
-@onready var pause_scene = $"Game Manager/Interface/pause_scene"
+@onready var game_manager = $"../Game Manager"
+
 const final_line = preload("res://Scenes/final_line.tscn")
 const tile = preload("res://Scenes/tile.tscn")
 
@@ -17,23 +15,19 @@ var node_space:float :
 @export var height = 5
 @export var width = 9
 
-var tower:PackedScene
+var tower:Tower
 
 var active_tile
 var picked_button
 
 var towerDetectionLimit:float
+
+signal game_over
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	panel_container.visible = false
 	enemy_spawner.initialize(height,node_space)
 	generate_board()
-	
-	for button in tower_buttons.get_children():
-		if button.has_signal("tower_picked"):
-			button.tower_picked.connect(_pick_tower)
-	
-	
+		
 	pass # Replace with function body.
 
 
@@ -42,10 +36,10 @@ func _process(delta):
 	pass
 	
 func create_tower():
-	var tower_object = tower.instantiate()
-	tower_object.position = active_tile.position + Vector2(node_size/2, node_size/2) 
+	var tower_position = active_tile.position + Vector2(node_size/2, node_size/2)
+	var tower_object = tower.instantiate(tower_position)  
 	tower_object.range = towerDetectionLimit - tower_object.position.x
-
+	tower_object.board = self
 	add_child(tower_object)
 	active_tile.tower = tower_object
 	game_manager.change_money(tower_object.stats.price,false)
@@ -110,17 +104,5 @@ func _pick_tower(button, tower):
 
 func _on_enemy_goal_area_entered(area):
 	Engine.time_scale = 0
-	panel_container.visible = true
-	pass # Replace with function body.
-
-
-func _on_button_pressed():
-	Engine.time_scale = 1
-	get_tree().reload_current_scene()
-	pass # Replace with function body.
-
-
-func _on_pause_button_pressed():
-	Engine.time_scale = 0
-	pause_scene.visible = true
+	emit_signal("game_over")
 	pass # Replace with function body.

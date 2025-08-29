@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=6 format=3 uid="uid://dxb170jkxkva2"]
+
+[ext_resource type="Script" path="res://Scripts/Scriptable Objects/Modules/damage.gd" id="1_6bh03"]
+[ext_resource type="Texture2D" uid="uid://bcond2ijg8uh2" path="res://Assets/Sprites/ReaperGB.png" id="1_ckqdh"]
+[ext_resource type="Resource" uid="uid://d0wm8a6wmbp2o" path="res://Assets/Towers/Projectiles/projectile.tres" id="2_3eogm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xu8s"]
+atlas = ExtResource("1_ckqdh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_if8k0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xu8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_6bh03")
+projectile = ExtResource("2_3eogm")
+shoot_speed = 1
+range = 20
+health = 10.0
+price = 16
+cooldown = 15.0
+animation = SubResource("SpriteFrames_if8k0")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmjwdj0dl1hdj"]
+
+[ext_resource type="Script" path="res://Scripts/mechanic.gd" id="1_m5f2j"]
+
+[node name="Mechanic" type="Node2D"]
+script = ExtResource("1_m5f2j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

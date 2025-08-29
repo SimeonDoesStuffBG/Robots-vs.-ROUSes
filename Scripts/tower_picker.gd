@@ -1,11 +1,11 @@
 class_name TowerPicker
 extends Button
 
-@export var tower: PackedScene
+@export var tower:Tower
 @onready var timer = $Timer
-@onready var game_manager = %"Game Manager"
+@onready var game_manager = $"../../.."
 
-signal tower_picked(button:Button,tower)
+signal tower_picked(button:Button,tower:Tower)
 var cooldown_time:float
 var price:int
 var can_aford: 
@@ -15,12 +15,9 @@ var on_cooldown:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.pressed.connect(_on_pressed)
-	var tower_instance = tower.instantiate()
-	cooldown_time = tower_instance.stats.cooldown
-	price = tower_instance.stats.price
+	cooldown_time = tower.cooldown
+	price = tower.price
 	self.text = str(price)
-	self.icon = tower_instance.stats.icon
-	tower_instance.queue_free() 
 	pass # Replace with function body.
 
 

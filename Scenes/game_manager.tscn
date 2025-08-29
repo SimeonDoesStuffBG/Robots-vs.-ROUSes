@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnjr62ywpbn56"]
+
+[ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_6qtm5"]
+[ext_resource type="PackedScene" uid="uid://do5xtljuw504i" path="res://Scenes/tower_picker.tscn" id="2_k84qf"]
+[ext_resource type="Resource" uid="uid://bsbowx0jei3ef" path="res://Assets/Towers/damage_tower.tres" id="3_hndp1"]
+[ext_resource type="PackedScene" uid="uid://qok77ue2qooy" path="res://Scenes/pause_scene.tscn" id="4_af5os"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wac38"]
+bg_color = Color(0.905882, 0.909804, 0.745098, 1)
+
+[node name="Game Manager" type="Node"]
+script = ExtResource("1_6qtm5")
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TowerButtons" type="HBoxContainer" parent="Interface"]
+layout_mode = 0
+offset_left = -149.0
+offset_top = -125.0
+offset_right = 188.0
+offset_bottom = -85.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 2
+
+[node name="TowerPicker" parent="Interface/TowerButtons" instance=ExtResource("2_k84qf")]
+layout_mode = 2
+tower = ExtResource("3_hndp1")
+
+[node name="MoneyLabel" type="Label" parent="Interface"]
+layout_mode = 0
+offset_left = -180.0
+offset_top = -124.0
+offset_right = -153.0
+offset_bottom = -101.0
+
+[node name="GameOver" type="PanelContainer" parent="Interface"]
+visible = false
+layout_mode = 0
+offset_left = -104.0
+offset_top = -68.0
+offset_right = 103.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wac38")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GameOver"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Interface/GameOver/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Interface/GameOver/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 8.15
+text = "Retry"
+
+[node name="PauseScene" parent="Interface" instance=ExtResource("4_af5os")]
+visible = false
+layout_mode = 1
+offset_left = -35.0
+offset_top = -42.0
+offset_right = -35.0
+offset_bottom = -42.0
+scale = Vector2(0.445, 0.445)
+
+[node name="PauseButton" type="Button" parent="Interface"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = -125.0
+offset_right = 193.0
+offset_bottom = -94.0
+text = "Pause"
+
+[connection signal="pressed" from="Interface/GameOver/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Interface/PauseButton" to="." method="_on_pause_button_pressed"]

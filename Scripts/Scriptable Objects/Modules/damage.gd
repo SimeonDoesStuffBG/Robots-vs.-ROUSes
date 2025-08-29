@@ -1,9 +1,9 @@
 class_name Damage
-extends Module
+extends WorkingModule
 
-@export var projectile: PackedScene
+@export var projectile:Projectile
 @export var shoot_speed = 1
-@export var range = 2
+@export var range = 20
 
 func _init():
 	self.scene = preload("res://Scenes/damage.tscn")

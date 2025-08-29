@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d22rljp3gq4jw"]
+[gd_scene load_steps=5 format=3 uid="uid://d22rljp3gq4jw"]
 
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_mn4jg"]
 [ext_resource type="Texture2D" uid="uid://s0rqs0ytoad3" path="res://Assets/Sprites/bullet.png" id="2_0pjoi"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxvlv"]
 radius = 4.0
 height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j2vt6"]
+radius = 0.01
 
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 4
@@ -19,3 +22,14 @@ shape = SubResource("CapsuleShape2D_xxvlv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0pjoi")
+
+[node name="Splash_Damage_Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Splash_Damage_Area"]
+shape = SubResource("CircleShape2D_j2vt6")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="area_entered" from="Splash_Damage_Area" to="." method="_on_splash_damage_area_area_entered"]
+[connection signal="area_exited" from="Splash_Damage_Area" to="." method="_on_splash_damage_area_area_exited"]

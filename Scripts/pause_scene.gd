@@ -20,3 +20,9 @@ func _on_continue_button_pressed():
 	Engine.time_scale = 1
 	self.visible = false
 	pass # Replace with function body.
+
+
+func _on_retry_button_pressed():
+	Engine.time_scale = 1
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

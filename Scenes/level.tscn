@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcb1y0r0pqm60"]
+
+[ext_resource type="PackedScene" uid="uid://bycoiko15s4xn" path="res://Scenes/board.tscn" id="1_57dkb"]
+[ext_resource type="PackedScene" uid="uid://cnjr62ywpbn56" path="res://Scenes/game_manager.tscn" id="2_qiol3"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Board" parent="." instance=ExtResource("1_57dkb")]
+
+[node name="Game Manager" parent="." instance=ExtResource("2_qiol3")]
+
+[connection signal="game_over" from="Board" to="Game Manager" method="_on_board_game_over"]
+[connection signal="tower_picked" from="Game Manager" to="Board" method="_pick_tower"]

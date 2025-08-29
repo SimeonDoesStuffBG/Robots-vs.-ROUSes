@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbyhmja0ebtxl"]
+
+[ext_resource type="Script" path="res://Scripts/select_towers.gd" id="1_h5fhc"]
+
+[node name="select_towers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h5fhc")
+
+[node name="Tower_customizers" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Tower_customizers"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 120.0
+offset_right = 473.0
+offset_bottom = 316.0
+
+[node name="Button2" type="Button" parent="Tower_customizers"]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 388.0
+offset_right = 799.0
+offset_bottom = 584.0
+
+[node name="Button3" type="Button" parent="Tower_customizers"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 388.0
+offset_right = 473.0
+offset_bottom = 584.0
+
+[node name="Button4" type="Button" parent="Tower_customizers"]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 120.0
+offset_right = 799.0
+offset_bottom = 316.0
+
+[connection signal="edit_tower" from="." to="." method="_on_edit_tower"]

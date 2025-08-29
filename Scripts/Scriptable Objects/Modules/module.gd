@@ -9,7 +9,7 @@ extends Resource
 var scene
 
 func instantiate(position:Vector2):
-	assert(scene is Tower_Module, "Invalid scene")
+	assert(scene!=null, "Invalid scene")
 	var instance = scene.instantiate()
 	instance.position = position
 	instance.stats = self

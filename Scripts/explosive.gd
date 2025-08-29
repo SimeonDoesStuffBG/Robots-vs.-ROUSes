@@ -5,14 +5,16 @@ extends Tower_Module
 
 var range:
 	get:
-		return stats.range * Global.tile_space
+		return stats.explosion_radius * Global.tile_space
 
 var items_to_explode: Array[Node2D]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(stats is Explosive, "Module must be explosive")
+	super._ready()
 	explosion_range.shape.radius = range
-	
+	if stats.is_instant:
+		explode()
 	pass # Replace with function body.
 
 func explode():
@@ -32,5 +34,15 @@ func _on_explosion_range_area_entered(area):
 
 func _on_explosion_range_area_exited(area):
 	items_to_explode.erase(area.get_parent())
-	print("Wololo")
+	pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	if has_power:
+		drain_power(stats.energy_drain)
+	pass # Replace with function body.
+
+
+func _on_out_of_power():
+	explode()
 	pass # Replace with function body.
