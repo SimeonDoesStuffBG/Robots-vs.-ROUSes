@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="Explosive" load_steps=10 format=3 uid="uid://blaies0l0ooxt"]
+
+[ext_resource type="Script" uid="uid://bjv10pjpt6ny2" path="res://Scripts/Scriptable Objects/Modules/explosive.gd" id="1_7at10"]
+[ext_resource type="Texture2D" uid="uid://cbv3h6sjt0lwe" path="res://Assets/Sprites/heads_sheet.png" id="1_refha"]
+[ext_resource type="Texture2D" uid="uid://cj1li55c63hyu" path="res://Assets/Sprites/inst_explosive_head.png" id="2_qahk1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75lhq"]
+atlas = ExtResource("1_refha")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74s8q"]
+atlas = ExtResource("1_refha")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_was5l"]
+atlas = ExtResource("1_refha")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slwnd"]
+atlas = ExtResource("1_refha")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd367"]
+atlas = ExtResource("1_refha")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lft8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75lhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74s8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_was5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slwnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_was5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slwnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_was5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slwnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_was5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd367")
+}],
+"loop": true,
+"name": &"exploding",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("1_7at10")
+explosion_radius = 1.5
+is_instant = true
+energy_drain = 2
+name = "Instant Explosive Head"
+info = "A head that explodes upon being placed destroying everything(Towers included) in its range"
+health = 8.0
+price = 8
+cooldown = 5.0
+icon = ExtResource("2_qahk1")
+animation = SubResource("SpriteFrames_lft8s")

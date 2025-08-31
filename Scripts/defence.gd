@@ -5,6 +5,7 @@ extends Tower_Module
 func _ready():
 	assert(stats is Defence, "Module must be defence")
 	super._ready()
+	animated_sprite.play("idle")
 	get_parent().health += stats.wall_health
 	pass # Replace with function body.
 

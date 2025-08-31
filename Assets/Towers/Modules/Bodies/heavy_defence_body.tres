@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=6 format=3 uid="uid://dehy820bmhboi"]
+
+[ext_resource type="Texture2D" uid="uid://c6c6uvwwybsmx" path="res://Assets/Sprites/Bodies_sheet.png" id="1_h4lnu"]
+[ext_resource type="Script" uid="uid://cibd3etra5woc" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_jkja6"]
+[ext_resource type="Texture2D" uid="uid://bg7pbos50p4wb" path="res://Assets/Sprites/Heavy_armour_Body.png" id="2_hv8fm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orgir"]
+atlas = ExtResource("1_h4lnu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83xwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orgir")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_jkja6")
+wall_health = 500.0
+energy_drain = 6
+name = "Heavy Defence Body"
+info = "Provides great defence at higher energy consumption"
+health = 100.0
+price = 8
+cooldown = 6.0
+icon = ExtResource("2_hv8fm")
+animation = SubResource("SpriteFrames_83xwu")

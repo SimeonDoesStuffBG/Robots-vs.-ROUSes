@@ -1,0 +1,147 @@
+[gd_resource type="Resource" script_class="Batery" load_steps=19 format=3 uid="uid://ckwmdc4pufjoh"]
+
+[ext_resource type="Script" uid="uid://dsvsge4e4bp8v" path="res://Scripts/Scriptable Objects/Modules/batery.gd" id="1_4onr0"]
+[ext_resource type="Texture2D" uid="uid://ge5vpbey6tdl" path="res://Assets/Sprites/Battery_sheet.png" id="1_oblhw"]
+[ext_resource type="Texture2D" uid="uid://1i1bigws6k8k" path="res://Assets/Sprites/Big_Battery_icon.png" id="2_sbjc7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khjhn"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq86k"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqn1b"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xku7k"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25ye0"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4w4m"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5hk5"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htvnv"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1ciw"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ihhh"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8k45"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqncp"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4pe7"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh2av"]
+atlas = ExtResource("1_oblhw")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6g7mp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khjhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq86k")
+}],
+"loop": true,
+"name": &"emptying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqn1b")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xku7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25ye0")
+}],
+"loop": true,
+"name": &"half",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4w4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5hk5")
+}],
+"loop": true,
+"name": &"quarter",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htvnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1ciw")
+}],
+"loop": true,
+"name": &"quarters",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ihhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8k45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqncp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4pe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh2av")
+}],
+"loop": true,
+"name": &"recharging",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_4onr0")
+charge = 500
+name = "Big Battery"
+info = "Larger more expensive Battery. Holds larger charge but takes more time to recharge."
+health = 20.0
+price = 16
+cooldown = 3.0
+icon = ExtResource("2_sbjc7")
+animation = SubResource("SpriteFrames_6g7mp")

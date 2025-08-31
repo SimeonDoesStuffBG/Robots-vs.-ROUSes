@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Explosive" load_steps=8 format=3 uid="uid://dt674uuhvbxva"]
+
+[ext_resource type="Script" uid="uid://bjv10pjpt6ny2" path="res://Scripts/Scriptable Objects/Modules/explosive.gd" id="1_w74i2"]
+[ext_resource type="Texture2D" uid="uid://c6c6uvwwybsmx" path="res://Assets/Sprites/Bodies_sheet.png" id="1_ysrv6"]
+[ext_resource type="Texture2D" uid="uid://cj4c0uhrs4unk" path="res://Assets/Sprites/delay_Explosive_Body.png" id="2_ldybn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqwfk"]
+atlas = ExtResource("1_ysrv6")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtcma"]
+atlas = ExtResource("1_ysrv6")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldnru"]
+atlas = ExtResource("1_ysrv6")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_to1x0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqwfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtcma")
+}],
+"loop": true,
+"name": &"exploding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldnru")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_w74i2")
+explosion_radius = 0.5
+is_instant = true
+energy_drain = 2
+name = "Dellayed Explosive Body"
+info = "An explosive body. Explodes when touched by enemy or out of power"
+health = 20.0
+price = 2
+cooldown = 5.0
+icon = ExtResource("2_ldybn")
+animation = SubResource("SpriteFrames_to1x0")

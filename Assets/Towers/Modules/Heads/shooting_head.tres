@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=11 format=3 uid="uid://bppgelhbj5lk7"]
+
+[ext_resource type="Texture2D" uid="uid://cbv3h6sjt0lwe" path="res://Assets/Sprites/heads_sheet.png" id="1_0ckeh"]
+[ext_resource type="Script" uid="uid://cgl7mw2mgha6k" path="res://Scripts/Scriptable Objects/Modules/damage.gd" id="1_famqs"]
+[ext_resource type="Texture2D" uid="uid://c64t86xevlq7q" path="res://Assets/Sprites/mechagodzilla_head.png" id="2_5mdfg"]
+[ext_resource type="Resource" uid="uid://dsjoswwyecid5" path="res://Assets/Towers/Projectiles/laser bolt.tres" id="2_is0a8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwgfr"]
+atlas = ExtResource("1_0ckeh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iofy"]
+atlas = ExtResource("1_0ckeh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h2t5"]
+atlas = ExtResource("1_0ckeh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxnfa"]
+atlas = ExtResource("1_0ckeh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lrdl"]
+atlas = ExtResource("1_0ckeh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60utc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwgfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iofy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h2t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iofy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwgfr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxnfa")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_4lrdl")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_famqs")
+projectile = ExtResource("2_is0a8")
+shoot_speed = 5
+range = 20
+energy_drain = 2
+name = "Shooting head"
+info = "A shooting head. Shoots strong lasers rarely"
+health = 30.0
+price = 4
+cooldown = 3.0
+icon = ExtResource("2_5mdfg")
+animation = SubResource("SpriteFrames_60utc")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8wxombxme3j2"]
+[gd_scene load_steps=3 format=3 uid="uid://b8wxombxme3j2"]
 
-[ext_resource type="Script" path="res://Scripts/damage.gd" id="1_qkdrs"]
+[ext_resource type="Script" uid="uid://khlhrns01b50" path="res://Scripts/damage.gd" id="1_qkdrs"]
+[ext_resource type="AudioStream" uid="uid://c3r0kl6kicimk" path="res://Assets/Audio/gunshot.wav" id="2_krq3i"]
 
 [node name="Damage" type="Node2D"]
 script = ExtResource("1_qkdrs")
@@ -14,5 +15,10 @@ one_shot = true
 target_position = Vector2(100, 0)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="Gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_krq3i")
+volume_db = -9.122
+attenuation = 3.605
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

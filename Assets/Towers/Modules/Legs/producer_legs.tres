@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Producer" load_steps=6 format=3 uid="uid://b28a4aak114yu"]
+
+[ext_resource type="Script" uid="uid://wdy3fgragx1x" path="res://Scripts/Scriptable Objects/Modules/producer.gd" id="1_3gn0l"]
+[ext_resource type="Texture2D" uid="uid://be0brgkruqke4" path="res://Assets/Sprites/legs_sheet.png" id="1_vb3qi"]
+[ext_resource type="Texture2D" uid="uid://hfkcvc45860f" path="res://Assets/Sprites/producer_legs_icon.png" id="2_7up8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2qgg"]
+atlas = ExtResource("1_vb3qi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kh86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2qgg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_3gn0l")
+produce_delay = 20
+initial_delay = 8
+energy_drain = 2
+name = "Producer legs"
+info = "Producer legs. Produce resources rarely at small health penalty"
+health = -50.0
+price = 4
+cooldown = 10.0
+icon = ExtResource("2_7up8k")
+animation = SubResource("SpriteFrames_1kh86")

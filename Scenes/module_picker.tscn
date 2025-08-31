@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://g67ylbxcpgcp"]
+[gd_scene load_steps=4 format=3 uid="uid://g67ylbxcpgcp"]
 
-[ext_resource type="Script" path="res://Scripts/module_picker.gd" id="1_u1gpl"]
+[ext_resource type="Script" uid="uid://dtvtbcy016xrv" path="res://Scripts/module_picker.gd" id="1_u1gpl"]
+[ext_resource type="PackedScene" uid="uid://cfhhvykb20uib" path="res://Scenes/module_grid.tscn" id="2_6xga7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fhk0r"]
+font_size = 17
+font_color = Color(0.32549, 0.32549, 0.32549, 1)
 
 [node name="ModulePicker" type="Control"]
 layout_mode = 3
@@ -11,98 +16,58 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1gpl")
 
-[node name="Modules" type="GridContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 303.0
-offset_bottom = 274.0
-columns = 3
+offset_left = -260.0
+offset_top = 69.0
+offset_right = 56.0
+offset_bottom = 348.0
 
-[node name="Heads" type="Control" parent="Modules"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -250.0
+offset_top = 75.0
+offset_right = 47.0
+offset_bottom = 327.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+text = "Select component to change"
+label_settings = SubResource("LabelSettings_fhk0r")
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Modules/Heads"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Heads"
-
-[node name="GridContainer" type="GridContainer" parent="Modules/Heads"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 3
-
-[node name="Bodies" type="Control" parent="Modules"]
+[node name="Heads" parent="VBoxContainer" instance=ExtResource("2_6xga7")]
 layout_mode = 2
+folder = "res://Assets/Towers/Modules/Heads/"
+button_name = "Heads"
 
-[node name="Label" type="Label" parent="Modules/Bodies"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Bodies"
-
-[node name="GridContainer" type="GridContainer" parent="Modules/Bodies"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 3
-
-[node name="Hands" type="Control" parent="Modules"]
+[node name="Bodies" parent="VBoxContainer" instance=ExtResource("2_6xga7")]
 layout_mode = 2
+folder = "res://Assets/Towers/Modules/Bodies/"
+button_name = "Bodies"
 
-[node name="Label" type="Label" parent="Modules/Hands"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Hands"
-
-[node name="GridContainer" type="GridContainer" parent="Modules/Hands"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 3
-
-[node name="Legs" type="Control" parent="Modules"]
+[node name="Hands" parent="VBoxContainer" instance=ExtResource("2_6xga7")]
 layout_mode = 2
+folder = "res://Assets/Towers/Modules/Hands/"
+button_name = "Hands"
 
-[node name="Label" type="Label" parent="Modules/Legs"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Legs"
-
-[node name="GridContainer" type="GridContainer" parent="Modules/Legs"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 3
-
-[node name="Batteries" type="Control" parent="Modules"]
+[node name="Legs" parent="VBoxContainer" instance=ExtResource("2_6xga7")]
 layout_mode = 2
+folder = "res://Assets/Towers/Modules/Legs/"
+button_name = "Legs"
 
-[node name="Label" type="Label" parent="Modules/Batteries"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Batteries"
-
-[node name="GridContainer" type="GridContainer" parent="Modules/Batteries"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 3
-
-[node name="Mechanics" type="Control" parent="Modules"]
+[node name="Batteries" parent="VBoxContainer" instance=ExtResource("2_6xga7")]
 layout_mode = 2
+folder = "res://Assets/Towers/Modules/Bateries/"
+button_name = "Batteries"
 
-[node name="Label" type="Label" parent="Modules/Mechanics"]
-layout_mode = 0
-offset_right = 407.0
-offset_bottom = 268.0
-text = "Mechanics"
+[node name="Mechanics" parent="VBoxContainer" instance=ExtResource("2_6xga7")]
+layout_mode = 2
+folder = "res://Assets/Towers/Modules/Mechanics/"
+button_name = "Mechanics"
 
-[node name="GridContainer" type="GridContainer" parent="Modules/Mechanics"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 3
+[node name="Save_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[connection signal="pressed" from="VBoxContainer/Save_Button" to="." method="_on_button_pressed"]

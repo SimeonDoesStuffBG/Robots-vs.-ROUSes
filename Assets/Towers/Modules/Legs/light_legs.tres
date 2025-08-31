@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Producer" load_steps=6 format=3 uid="uid://c3bjxco5f6dgo"]
+
+[ext_resource type="Texture2D" uid="uid://be0brgkruqke4" path="res://Assets/Sprites/legs_sheet.png" id="1_bemm5"]
+[ext_resource type="Script" uid="uid://wdy3fgragx1x" path="res://Scripts/Scriptable Objects/Modules/producer.gd" id="1_h73xd"]
+[ext_resource type="Texture2D" uid="uid://dbx25ggavqpug" path="res://Assets/Sprites/light_legs_icon.png" id="2_wwosl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahqjd"]
+atlas = ExtResource("1_bemm5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k270"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahqjd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_h73xd")
+produce_delay = 10
+initial_delay = 3
+energy_drain = 1
+name = "Light legs"
+info = "Light legs. Produce resources more frequently but have large health penalty"
+health = -300.0
+price = 2
+cooldown = 2.0
+icon = ExtResource("2_wwosl")
+animation = SubResource("SpriteFrames_6k270")

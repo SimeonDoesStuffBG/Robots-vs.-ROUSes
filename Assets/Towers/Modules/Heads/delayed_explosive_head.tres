@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="Explosive" load_steps=9 format=3 uid="uid://bjtgym7dgetj6"]
+
+[ext_resource type="Texture2D" uid="uid://cbv3h6sjt0lwe" path="res://Assets/Sprites/heads_sheet.png" id="1_hkqhs"]
+[ext_resource type="Script" uid="uid://bjv10pjpt6ny2" path="res://Scripts/Scriptable Objects/Modules/explosive.gd" id="1_phllk"]
+[ext_resource type="Texture2D" uid="uid://b7bsurwumetva" path="res://Assets/Sprites/delay_explosive_head.png" id="2_a67tq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqh31"]
+atlas = ExtResource("1_hkqhs")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uji83"]
+atlas = ExtResource("1_hkqhs")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwd8o"]
+atlas = ExtResource("1_hkqhs")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pttot"]
+atlas = ExtResource("1_hkqhs")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfwqf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqh31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uji83")
+}],
+"loop": true,
+"name": &"exploding",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwd8o")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_pttot")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_phllk")
+explosion_radius = 1.5
+is_instant = false
+energy_drain = 2
+name = "Delayed Explosive Head"
+info = "Explosive head with delayed effect. Will explode when touched or when tower is out of power"
+health = 20.0
+price = 4
+cooldown = 5.0
+icon = ExtResource("2_a67tq")
+animation = SubResource("SpriteFrames_tfwqf")

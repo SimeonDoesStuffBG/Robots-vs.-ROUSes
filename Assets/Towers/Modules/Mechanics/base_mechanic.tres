@@ -1,24 +1,24 @@
 [gd_resource type="Resource" script_class="Mechanic" load_steps=12 format=3 uid="uid://cwefvcw3xeyu6"]
 
-[ext_resource type="Script" path="res://Scripts/Scriptable Objects/Modules/mechanic.gd" id="1_b8r70"]
+[ext_resource type="Script" uid="uid://b7gwflconsi05" path="res://Scripts/Scriptable Objects/Modules/mechanic.gd" id="1_b8r70"]
 [ext_resource type="Texture2D" uid="uid://d4i04kl2yk782" path="res://Assets/Sprites/mechanic_spritesheet.png" id="1_ibqcl"]
 [ext_resource type="Texture2D" uid="uid://chwjurqda3305" path="res://Assets/Sprites/mechanic_icon.png" id="2_3qltp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s6d1o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktkcp"]
 atlas = ExtResource("1_ibqcl")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gojdd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n77lr"]
 atlas = ExtResource("1_ibqcl")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmo76"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyuja"]
 atlas = ExtResource("1_ibqcl")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qafyl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd61d"]
 atlas = ExtResource("1_ibqcl")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfony"]
 atlas = ExtResource("1_ibqcl")
@@ -36,22 +36,22 @@ region = Rect2(32, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s6d1o")
+"texture": SubResource("AtlasTexture_ktkcp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gojdd")
+"texture": SubResource("AtlasTexture_n77lr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pmo76")
+"texture": SubResource("AtlasTexture_yyuja")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qafyl")
+"texture": SubResource("AtlasTexture_sd61d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gojdd")
+"texture": SubResource("AtlasTexture_n77lr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s6d1o")
+"texture": SubResource("AtlasTexture_ktkcp")
 }],
 "loop": true,
 "name": &"fixing",
@@ -81,7 +81,9 @@ animations = [{
 [resource]
 script = ExtResource("1_b8r70")
 speed = 10
-thoroughness = 1.0
+thoroughness = 0.85
+name = "Base Mechanic"
+info = "Basic mechanic. Takes average time to recharge the tower to good degree"
 health = 10.0
 price = 8
 cooldown = 2.0

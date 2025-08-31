@@ -5,6 +5,8 @@ var game_manager
 var is_selected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("Area2D").mouse_entered.connect(_on_area_2d_mouse_entered)
+	get_node("Area2D").mouse_exited.connect(_on_area_2d_mouse_exited)
 	pass # Replace with function body.
 
 

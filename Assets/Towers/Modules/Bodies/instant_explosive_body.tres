@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Explosive" load_steps=7 format=3 uid="uid://cx68vh4kc6bdc"]
+
+[ext_resource type="Script" uid="uid://bjv10pjpt6ny2" path="res://Scripts/Scriptable Objects/Modules/explosive.gd" id="1_jvx3n"]
+[ext_resource type="Texture2D" uid="uid://c6c6uvwwybsmx" path="res://Assets/Sprites/Bodies_sheet.png" id="1_n4ltf"]
+[ext_resource type="Texture2D" uid="uid://cq37i4buukqrr" path="res://Assets/Sprites/inst_Explosive_Body.png" id="2_8f4ae"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya84c"]
+atlas = ExtResource("1_n4ltf")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02ojx"]
+atlas = ExtResource("1_n4ltf")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xc2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya84c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02ojx")
+}],
+"loop": true,
+"name": &"exploding",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("1_jvx3n")
+explosion_radius = 2.5
+is_instant = true
+energy_drain = 2
+name = "Instant explosive body"
+info = "A body that explodes when placed"
+health = 10.0
+price = 16
+cooldown = 6.0
+icon = ExtResource("2_8f4ae")
+animation = SubResource("SpriteFrames_4xc2y")

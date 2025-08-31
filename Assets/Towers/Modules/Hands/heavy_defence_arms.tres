@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=8 format=3 uid="uid://dr5huymf2ojhl"]
+
+[ext_resource type="Script" uid="uid://cibd3etra5woc" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_cfqjt"]
+[ext_resource type="Texture2D" uid="uid://dp1edspo17whw" path="res://Assets/Sprites/hands_sheet.png" id="1_g66lm"]
+[ext_resource type="Texture2D" uid="uid://dw51845a5c4kt" path="res://Assets/Sprites/heavy_defence_hands_icon.png" id="2_2e34d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2h6n"]
+atlas = ExtResource("1_g66lm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4641g"]
+atlas = ExtResource("1_g66lm")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64yep"]
+atlas = ExtResource("1_g66lm")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ng6mk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2h6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4641g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2h6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64yep")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_cfqjt")
+wall_health = 500.0
+energy_drain = 6
+name = "Heavy Defence arms"
+info = "Arms that provide large amount of defence with high energy drain"
+health = 50.0
+price = 16
+cooldown = 15.0
+icon = ExtResource("2_2e34d")
+animation = SubResource("SpriteFrames_ng6mk")

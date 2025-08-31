@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Tower" load_steps=8 format=3 uid="uid://7u8cnb6eo1e2"]
+
+[ext_resource type="Resource" uid="uid://didkkibt7wx6c" path="res://Assets/Towers/Modules/Bateries/Base Battery.tres" id="1_5yvhw"]
+[ext_resource type="Script" uid="uid://b1nr5sjnvgxbf" path="res://Scripts/Scriptable Objects/tower.gd" id="1_nxsga"]
+[ext_resource type="Resource" uid="uid://dimhwjh0wydfl" path="res://Assets/Towers/Modules/Bodies/light_defence_body.tres" id="2_fi463"]
+[ext_resource type="Resource" uid="uid://y6vnjj2e8iix" path="res://Assets/Towers/Modules/Hands/light_defence_arms.tres" id="3_syyqn"]
+[ext_resource type="Resource" uid="uid://dwbeva1juecoh" path="res://Assets/Towers/Modules/Heads/Producer_head.tres" id="4_43xy3"]
+[ext_resource type="Resource" uid="uid://ccs2iwlasfsxt" path="res://Assets/Towers/Modules/Legs/Light_defence_legs.tres" id="5_ehnt0"]
+[ext_resource type="Resource" uid="uid://cwefvcw3xeyu6" path="res://Assets/Towers/Modules/Mechanics/base_mechanic.tres" id="6_fhpty"]
+
+[resource]
+script = ExtResource("1_nxsga")
+head = ExtResource("4_43xy3")
+battery = ExtResource("1_5yvhw")
+legs = ExtResource("5_ehnt0")
+body = ExtResource("2_fi463")
+hands = ExtResource("3_syyqn")
+mechanic = ExtResource("6_fhpty")

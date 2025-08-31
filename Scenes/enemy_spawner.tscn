@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bps1ctva2yage"]
+[gd_scene load_steps=4 format=3 uid="uid://bps1ctva2yage"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="1_uo2ac"]
-[ext_resource type="PackedScene" uid="uid://5087rcqjxtqw" path="res://Scenes/enemy.tscn" id="2_f7kva"]
+[ext_resource type="Script" uid="uid://wtsge6ucbsj8" path="res://Scripts/enemy_spawner.gd" id="1_uo2ac"]
+[ext_resource type="Script" uid="uid://dh5reilgyu8db" path="res://Scripts/Scriptable Objects/Enemy.gd" id="2_cdqhx"]
+[ext_resource type="Resource" uid="uid://du84uhn24sshk" path="res://Assets/Enemies/Base Enemy.tres" id="2_xt5yw"]
 
 [node name="enemy_spawner" type="Node2D"]
 script = ExtResource("1_uo2ac")
-enemy = ExtResource("2_f7kva")
+enemies = Array[ExtResource("2_cdqhx")]([ExtResource("2_xt5yw")])
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 
+[node name="Ramp up" type="Timer" parent="."]
+wait_time = 15.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Ramp up" to="." method="_on_ramp_up_timeout"]

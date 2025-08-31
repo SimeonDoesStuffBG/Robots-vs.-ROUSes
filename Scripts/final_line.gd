@@ -5,6 +5,7 @@ var activated = false
 var speed = 70
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animated_sprite.play("idle")
 	pass # Replace with function body.
 
 
@@ -17,5 +18,5 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	area.get_parent().queue_free()
 	activated = true
-	animated_sprite.play("default")
+	animated_sprite.play("attack")
 	pass # Replace with function body.

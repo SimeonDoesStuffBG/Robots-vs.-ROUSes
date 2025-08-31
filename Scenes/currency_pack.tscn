@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://ciyiyswjqljgr"]
 
-[ext_resource type="Texture2D" uid="uid://dpn5e5xct4h6u" path="res://Assets/Sprites/projectile.png" id="1_vywb7"]
-[ext_resource type="Script" path="res://Scripts/currency_pack.gd" id="1_xn20j"]
+[ext_resource type="Script" uid="uid://p8fma88upkp4" path="res://Scripts/currency_pack.gd" id="1_xn20j"]
+[ext_resource type="Texture2D" uid="uid://ctlbyxpbrjslc" path="res://Assets/Sprites/Screws.png" id="2_f8p48"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6dnw5"]
-atlas = ExtResource("1_vywb7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_swiyh"]
+atlas = ExtResource("2_f8p48")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7xrha"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6dnw5")
+"texture": SubResource("AtlasTexture_swiyh")
 }],
 "loop": true,
 "name": &"default",
@@ -19,13 +19,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3uvp"]
-radius = 4.0
+radius = 8.0
 
 [node name="CurrencyPack" type="Node2D"]
 script = ExtResource("1_xn20j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7xrha")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -39,6 +38,4 @@ shape = SubResource("CircleShape2D_n3uvp")
 wait_time = 5.0
 autostart = true
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="Mechanic" load_steps=12 format=3 uid="uid://bfh4occ277njc"]
+
+[ext_resource type="Texture2D" uid="uid://d4i04kl2yk782" path="res://Assets/Sprites/mechanic_spritesheet.png" id="1_nfpdm"]
+[ext_resource type="Script" uid="uid://b7gwflconsi05" path="res://Scripts/Scriptable Objects/Modules/mechanic.gd" id="1_qc0ia"]
+[ext_resource type="Texture2D" uid="uid://b3jndli2q1gri" path="res://Assets/Sprites/Fast_mechanic_icon.png" id="2_tiwtf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu8vw"]
+atlas = ExtResource("1_nfpdm")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk6yq"]
+atlas = ExtResource("1_nfpdm")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53cen"]
+atlas = ExtResource("1_nfpdm")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbh0b"]
+atlas = ExtResource("1_nfpdm")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v1ow"]
+atlas = ExtResource("1_nfpdm")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6yqf"]
+atlas = ExtResource("1_nfpdm")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3bpy"]
+atlas = ExtResource("1_nfpdm")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bwyb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu8vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk6yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53cen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbh0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk6yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu8vw")
+}],
+"loop": true,
+"name": &"fixing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v1ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6yqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3bpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6yqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v1ow")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_qc0ia")
+speed = 40
+thoroughness = 0.5
+name = "Fast mechanic"
+info = "A faster but sloppier mechanic"
+health = 10.0
+price = 16
+cooldown = 1.0
+icon = ExtResource("2_tiwtf")
+animation = SubResource("SpriteFrames_bwyb0")

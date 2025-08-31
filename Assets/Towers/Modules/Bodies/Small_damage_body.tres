@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=9 format=3 uid="uid://dmshripvlpkwe"]
+
+[ext_resource type="Texture2D" uid="uid://c6c6uvwwybsmx" path="res://Assets/Sprites/Bodies_sheet.png" id="1_foat4"]
+[ext_resource type="Script" uid="uid://cgl7mw2mgha6k" path="res://Scripts/Scriptable Objects/Modules/damage.gd" id="1_gp4nk"]
+[ext_resource type="Texture2D" uid="uid://b7si0stskyf5h" path="res://Assets/Sprites/heavy_damage_Body.png" id="2_2mkd4"]
+[ext_resource type="Resource" uid="uid://d0wm8a6wmbp2o" path="res://Assets/Towers/Projectiles/projectile.tres" id="2_otoa8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygfqf"]
+atlas = ExtResource("1_foat4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sksu1"]
+atlas = ExtResource("1_foat4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap7qn"]
+atlas = ExtResource("1_foat4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sk52o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfqf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_sksu1")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ap7qn")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_gp4nk")
+projectile = ExtResource("2_otoa8")
+shoot_speed = 1
+range = 20
+energy_drain = 2
+name = "Light damage body"
+info = "Fires regular bulets"
+health = 10.0
+price = 4
+cooldown = 3.0
+icon = ExtResource("2_2mkd4")
+animation = SubResource("SpriteFrames_sk52o")

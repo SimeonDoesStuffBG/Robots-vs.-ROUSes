@@ -8,6 +8,7 @@ func _ready():
 	assert(stats is Producer, "Module must be a producer")
 	super._ready()
 	timer.start(stats.initial_delay)
+	animated_sprite.play("idle")
 	pass # Replace with function body.
 
 
@@ -22,8 +23,11 @@ func produce():
 	drain_power(stats.energy_drain)
 	get_parent().board.add_child(bolts)
 	timer.start(stats.produce_delay)
+	animated_sprite.play("idle")
+
 
 func _on_timer_timeout():
 	if has_power:
+		animated_sprite.play("producing")
 		produce()
 	pass # Replace with function body.

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=6 format=3 uid="uid://dimhwjh0wydfl"]
+
+[ext_resource type="Texture2D" uid="uid://c6c6uvwwybsmx" path="res://Assets/Sprites/Bodies_sheet.png" id="1_wqino"]
+[ext_resource type="Script" uid="uid://cibd3etra5woc" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_yr2k8"]
+[ext_resource type="Texture2D" uid="uid://dong62fiw7i87" path="res://Assets/Sprites/light_armour_Body.png" id="2_7iin1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itkuj"]
+atlas = ExtResource("1_wqino")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idev2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itkuj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_yr2k8")
+wall_health = 200.0
+energy_drain = 2
+name = "Light Defence body"
+info = "Provides light defence at decent price"
+health = 50.0
+price = 12
+cooldown = 2.0
+icon = ExtResource("2_7iin1")
+animation = SubResource("SpriteFrames_idev2")

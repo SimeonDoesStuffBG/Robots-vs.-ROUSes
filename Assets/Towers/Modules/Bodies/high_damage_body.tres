@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=9 format=3 uid="uid://dnogvd5mpy0va"]
+
+[ext_resource type="Texture2D" uid="uid://c6c6uvwwybsmx" path="res://Assets/Sprites/Bodies_sheet.png" id="1_c3sgy"]
+[ext_resource type="Script" uid="uid://cgl7mw2mgha6k" path="res://Scripts/Scriptable Objects/Modules/damage.gd" id="1_gxha2"]
+[ext_resource type="Texture2D" uid="uid://c1s6dk5mkldy4" path="res://Assets/Sprites/light_damage_Body.png" id="2_636sy"]
+[ext_resource type="Resource" uid="uid://ccdsvk5nk4te5" path="res://Assets/Towers/Projectiles/heavy_projectile.tres" id="2_rvgvi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvmax"]
+atlas = ExtResource("1_c3sgy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p1lr"]
+atlas = ExtResource("1_c3sgy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41kau"]
+atlas = ExtResource("1_c3sgy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkmy2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvmax")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_1p1lr")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_41kau")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_gxha2")
+projectile = ExtResource("2_rvgvi")
+shoot_speed = 2
+range = 20
+energy_drain = 4
+name = "High Damage Body"
+info = "Deals heavy damage with slow firing"
+health = 30.0
+price = 12
+cooldown = 3.0
+icon = ExtResource("2_636sy")
+animation = SubResource("SpriteFrames_pkmy2")

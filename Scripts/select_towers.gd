@@ -1,15 +1,15 @@
 extends Control
 
-const module_picker = preload("res://Scenes/module_picker.tscn")
+@onready var module_picker = $ModulePicker
 @onready var tower_customizers = $Tower_customizers
-var towers:Array[Tower]
-signal edit_tower(tower)
+const tower_editor = preload("res://Scenes/tower_customizer.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for button in tower_customizers.get_children():
-		var new_tower = Tower.new()
-		towers.push_back(new_tower)
-		button.pressed.connect(emit_signal("edit_tower",new_tower))
+	for tower in Global.towers:
+		var button = tower_editor.instantiate()
+		button.tower = tower
+		button.pressed.connect(_on_edit_tower.bind(tower))
+		tower_customizers.add_child(button)
 		pass
 	pass # Replace with function body.
 
@@ -20,7 +20,12 @@ func _process(delta):
 
 
 func _on_edit_tower(tower):
-	var picker = module_picker.instantiate()
-	picker.tower = tower
-	add_child(picker)
+	module_picker.tower = tower
+	module_picker.setup_tower()
+	module_picker.visible = true
+	pass # Replace with function body.
+
+
+func _on_play_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/level.tscn")
 	pass # Replace with function body.

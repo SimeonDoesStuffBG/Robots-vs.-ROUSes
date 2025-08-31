@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=6 format=3 uid="uid://b2qopn6mo7vd7"]
+
+[ext_resource type="Script" uid="uid://cibd3etra5woc" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_j71xr"]
+[ext_resource type="Texture2D" uid="uid://be0brgkruqke4" path="res://Assets/Sprites/legs_sheet.png" id="1_rolp4"]
+[ext_resource type="Texture2D" uid="uid://bydf3kffs0fjv" path="res://Assets/Sprites/heavy_defence_legs_icon.png" id="2_vj0k4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcu53"]
+atlas = ExtResource("1_rolp4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55f2k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcu53")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_j71xr")
+wall_health = 500.0
+energy_drain = 5
+name = "Heavy Defence legs"
+info = "Heavy Defencive legs. Provide great amounts of protection at high cost and energy drain"
+health = 50.0
+price = 16
+cooldown = 6.0
+icon = ExtResource("2_vj0k4")
+animation = SubResource("SpriteFrames_55f2k")

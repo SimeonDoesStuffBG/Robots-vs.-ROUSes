@@ -6,4 +6,3 @@ extends WorkingModule
 func _init():
 	self.health += wall_health
 	self.scene = preload("res://Scenes/defence.tscn")
-

@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="Producer" load_steps=10 format=3 uid="uid://dwbeva1juecoh"]
+
+[ext_resource type="Script" uid="uid://wdy3fgragx1x" path="res://Scripts/Scriptable Objects/Modules/producer.gd" id="1_chkp0"]
+[ext_resource type="Texture2D" uid="uid://cbv3h6sjt0lwe" path="res://Assets/Sprites/heads_sheet.png" id="1_oylqr"]
+[ext_resource type="Texture2D" uid="uid://2322yp8of7kl" path="res://Assets/Sprites/produce_head.png" id="2_u7c5g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fng3j"]
+atlas = ExtResource("1_oylqr")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fmc8"]
+atlas = ExtResource("1_oylqr")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bvrh"]
+atlas = ExtResource("1_oylqr")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poayg"]
+atlas = ExtResource("1_oylqr")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8p52"]
+atlas = ExtResource("1_oylqr")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7q626"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fng3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fmc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bvrh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poayg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8p52")
+}],
+"loop": true,
+"name": &"producing",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("1_chkp0")
+produce_delay = 17
+initial_delay = 5
+energy_drain = 3
+name = "Producer head"
+info = "A head that produces resources"
+health = -30.0
+price = 2
+cooldown = 2.0
+icon = ExtResource("2_u7c5g")
+animation = SubResource("SpriteFrames_7q626")

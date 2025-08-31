@@ -1,47 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbyhmja0ebtxl"]
+[gd_scene load_steps=4 format=3 uid="uid://bbyhmja0ebtxl"]
 
-[ext_resource type="Script" path="res://Scripts/select_towers.gd" id="1_h5fhc"]
+[ext_resource type="Script" uid="uid://5olomcxhrlpn" path="res://Scripts/select_towers.gd" id="1_h5fhc"]
+[ext_resource type="PackedScene" uid="uid://g67ylbxcpgcp" path="res://Scenes/module_picker.tscn" id="2_qtm71"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_edlii"]
+font_size = 51
+font_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
 
 [node name="select_towers" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h5fhc")
 
-[node name="Tower_customizers" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="Tower_customizers"]
+[node name="Tower_customizers" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 285.0
-offset_top = 120.0
-offset_right = 473.0
-offset_bottom = 316.0
+offset_left = 303.0
+offset_top = 100.0
+offset_right = 814.0
+offset_bottom = 489.0
+columns = 2
 
-[node name="Button2" type="Button" parent="Tower_customizers"]
+[node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 607.0
-offset_top = 388.0
-offset_right = 799.0
-offset_bottom = 584.0
+offset_left = 303.0
+offset_top = 512.0
+offset_right = 814.0
+offset_bottom = 576.0
+text = "Play
+"
 
-[node name="Button3" type="Button" parent="Tower_customizers"]
+[node name="ModulePicker" parent="." instance=ExtResource("2_qtm71")]
+visible = false
+layout_mode = 1
+offset_left = 417.0
+offset_top = 127.0
+offset_right = 417.0
+offset_bottom = 127.0
+
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 285.0
-offset_top = 388.0
-offset_right = 473.0
-offset_bottom = 584.0
+offset_left = 303.0
+offset_right = 866.0
+offset_bottom = 73.0
+text = "Customize your towers"
+label_settings = SubResource("LabelSettings_edlii")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button4" type="Button" parent="Tower_customizers"]
-layout_mode = 0
-offset_left = 607.0
-offset_top = 120.0
-offset_right = 799.0
-offset_bottom = 316.0
-
-[connection signal="edit_tower" from="." to="." method="_on_edit_tower"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

@@ -1,0 +1,222 @@
+[gd_scene load_steps=21 format=3 uid="uid://c8xv48m735tig"]
+
+[ext_resource type="Script" uid="uid://csm3hgy8v7uuj" path="res://Scripts/module_button.gd" id="1_wnik6"]
+[ext_resource type="Texture2D" uid="uid://ge5vpbey6tdl" path="res://Assets/Sprites/Battery_sheet.png" id="2_8uqrl"]
+[ext_resource type="Texture2D" uid="uid://bd63mv3adhhqy" path="res://Assets/Sprites/Battery_icon.png" id="3_gs1g6"]
+[ext_resource type="Script" uid="uid://dsvsge4e4bp8v" path="res://Scripts/Scriptable Objects/Modules/batery.gd" id="4_28bbf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d57o4"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt0ka"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3162m"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tny2e"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffe07"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yertk"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36f1k"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3b67"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhpw0"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2vbi"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nuji"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5iwh"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r6ml"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feebv"]
+atlas = ExtResource("2_8uqrl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7oo28"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d57o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt0ka")
+}],
+"loop": true,
+"name": &"emptying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3162m")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tny2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffe07")
+}],
+"loop": true,
+"name": &"half",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yertk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36f1k")
+}],
+"loop": true,
+"name": &"quarter",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3b67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhpw0")
+}],
+"loop": true,
+"name": &"quarters",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2vbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nuji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5iwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r6ml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feebv")
+}],
+"loop": true,
+"name": &"recharging",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_1jr84"]
+script = ExtResource("4_28bbf")
+charge = 100
+name = "Base Battery"
+info = ""
+health = 10.0
+price = 8
+cooldown = 15.0
+icon = ExtResource("3_gs1g6")
+animation = SubResource("SpriteFrames_7oo28")
+
+[node name="Module_button" type="Button"]
+offset_left = 90.0
+offset_top = 61.0
+offset_right = 125.0
+offset_bottom = 96.0
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("1_wnik6")
+module = SubResource("Resource_1jr84")
+
+[node name="Information" type="Control" parent="."]
+visible = false
+z_index = 3
+anchors_preset = 0
+offset_left = -55.0
+offset_top = -123.0
+offset_right = -20.0
+offset_bottom = -86.0
+
+[node name="ColorRect" type="ColorRect" parent="Information"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 52.0
+offset_right = 406.0
+offset_bottom = 329.0
+color = Color(0.137255, 0.0235294, 0.392157, 1)
+
+[node name="Name Label" type="Label" parent="Information"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 63.0
+offset_right = 196.0
+offset_bottom = 89.0
+text = "Information"
+
+[node name="Health label" type="Label" parent="Information"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 155.0
+offset_right = 150.0
+offset_bottom = 178.0
+text = "Health
+"
+
+[node name="Price_Label" type="Label" parent="Information"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 104.0
+offset_right = 203.0
+offset_bottom = 127.0
+text = "Price:"
+
+[node name="Recharge_Label" type="Label" parent="Information"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 129.0
+offset_right = 230.0
+offset_bottom = 155.0
+text = "Recharge time: "
+
+[node name="info" type="Label" parent="Information"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 181.0
+offset_right = 383.0
+offset_bottom = 207.0
+text = "Info
+"
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

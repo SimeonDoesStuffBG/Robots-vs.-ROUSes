@@ -1,18 +1,18 @@
-[gd_resource type="Resource" script_class="Tower" load_steps=8 format=3 uid="uid://bsbowx0jei3ef"]
+[gd_resource type="Resource" script_class="Tower" load_steps=8 format=3 uid="uid://c4cmaypxfrmme"]
 
-[ext_resource type="Script" path="res://Scripts/Scriptable Objects/tower.gd" id="1_mt3ng"]
-[ext_resource type="Resource" uid="uid://b56pp3gscmrjj" path="res://Assets/Towers/Modules/Bateries/base_batery.tres" id="1_yfngu"]
-[ext_resource type="Resource" uid="uid://cup6u0kblfohk" path="res://Assets/Towers/Modules/Bodies/defence.tres" id="2_w311m"]
-[ext_resource type="Resource" uid="uid://dxb170jkxkva2" path="res://Assets/Towers/Modules/Hands/hands.tres" id="3_mrcr4"]
-[ext_resource type="Resource" uid="uid://dkx0hviqqhqg7" path="res://Assets/Towers/Modules/Heads/head2.tres" id="4_715ru"]
-[ext_resource type="Resource" uid="uid://bykuiaxnmthqk" path="res://Assets/Towers/Modules/Legs/legs.tres" id="5_p0nu0"]
+[ext_resource type="Script" uid="uid://b1nr5sjnvgxbf" path="res://Scripts/Scriptable Objects/tower.gd" id="1_mt3ng"]
+[ext_resource type="Resource" uid="uid://didkkibt7wx6c" path="res://Assets/Towers/Modules/Bateries/Base Battery.tres" id="1_wkj7y"]
+[ext_resource type="Resource" uid="uid://dimhwjh0wydfl" path="res://Assets/Towers/Modules/Bodies/light_defence_body.tres" id="2_uesbm"]
+[ext_resource type="Resource" uid="uid://c6islnke6gm62" path="res://Assets/Towers/Modules/Hands/Light_damage_Arms.tres" id="3_6ktf2"]
+[ext_resource type="Resource" uid="uid://c0me4hu6y8apo" path="res://Assets/Towers/Modules/Heads/light_defence_head.tres" id="4_4pijw"]
+[ext_resource type="Resource" uid="uid://ccs2iwlasfsxt" path="res://Assets/Towers/Modules/Legs/Light_defence_legs.tres" id="5_p87l5"]
 [ext_resource type="Resource" uid="uid://cwefvcw3xeyu6" path="res://Assets/Towers/Modules/Mechanics/base_mechanic.tres" id="6_e280s"]
 
 [resource]
 script = ExtResource("1_mt3ng")
-head = ExtResource("4_715ru")
-battery = ExtResource("1_yfngu")
-legs = ExtResource("5_p0nu0")
-body = ExtResource("2_w311m")
-hands = ExtResource("3_mrcr4")
+head = ExtResource("4_4pijw")
+battery = ExtResource("1_wkj7y")
+legs = ExtResource("5_p87l5")
+body = ExtResource("2_uesbm")
+hands = ExtResource("3_6ktf2")
 mechanic = ExtResource("6_e280s")

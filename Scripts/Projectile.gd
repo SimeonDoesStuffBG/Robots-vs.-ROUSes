@@ -4,11 +4,13 @@ extends CharacterBody2D
 var speed
 var damage
 @onready var splash_damage_area = $Splash_Damage_Area/CollisionShape2D
+@onready var sprite = $Sprite2D
 var splash_damage_items:Array[Node2D]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.speed = stats.speed
 	self.damage = stats.damage
+	sprite.texture = stats.sprite
 	if stats.is_explosive:
 		splash_damage_area.shape.radius = stats.explosive_radius * Global.tile_space
 	pass # Replace with function body.

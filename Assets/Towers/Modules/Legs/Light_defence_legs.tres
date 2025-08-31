@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=6 format=3 uid="uid://ccs2iwlasfsxt"]
+
+[ext_resource type="Script" uid="uid://cibd3etra5woc" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_6tah0"]
+[ext_resource type="Texture2D" uid="uid://be0brgkruqke4" path="res://Assets/Sprites/legs_sheet.png" id="1_gw6ky"]
+[ext_resource type="Texture2D" uid="uid://cdnrvhycyw3g7" path="res://Assets/Sprites/small_defence_legs_icon.png" id="2_bxpyh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_molt5"]
+atlas = ExtResource("1_gw6ky")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfuos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_molt5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_6tah0")
+wall_health = 150.0
+energy_drain = 2
+name = "Light Defence legs"
+info = "Light defence legs. Provide low amount of protection at a good price and low energy drain"
+health = 50.0
+price = 8
+cooldown = 4.0
+icon = ExtResource("2_bxpyh")
+animation = SubResource("SpriteFrames_lfuos")

@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=8 format=3 uid="uid://c0me4hu6y8apo"]
+
+[ext_resource type="Script" uid="uid://cibd3etra5woc" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_7qiao"]
+[ext_resource type="Texture2D" uid="uid://cbv3h6sjt0lwe" path="res://Assets/Sprites/heads_sheet.png" id="1_ddll5"]
+[ext_resource type="Texture2D" uid="uid://bm0ldvrv8de24" path="res://Assets/Sprites/light_defence_head.png" id="2_fgivf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqdmd"]
+atlas = ExtResource("1_ddll5")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2le0p"]
+atlas = ExtResource("1_ddll5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptwek"]
+atlas = ExtResource("1_ddll5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwfmg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqdmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2le0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptwek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2le0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqdmd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_7qiao")
+wall_health = 100.0
+energy_drain = 2
+name = "Light Defence Head"
+info = "A Light Defence head. Gives good defence for cheap price"
+health = 50.0
+price = 8
+cooldown = 4.0
+icon = ExtResource("2_fgivf")
+animation = SubResource("SpriteFrames_qwfmg")

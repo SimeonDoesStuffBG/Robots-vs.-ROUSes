@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b517fwj5ngiae"]
 
-[ext_resource type="Script" path="res://Scripts/tower.gd" id="1_nwlv8"]
+[ext_resource type="Script" uid="uid://ca1cbx1fbp31u" path="res://Scripts/tower.gd" id="1_nwlv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqq1t"]
 size = Vector2(15, 26)
@@ -16,21 +16,21 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_aqq1t")
 
 [node name="Legs" type="Node2D" parent="."]
+position = Vector2(0, 6)
 
 [node name="Head" type="Node2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(1, -14)
 
 [node name="Body" type="Node2D" parent="."]
-position = Vector2(0, -5)
 
 [node name="Hands" type="Node2D" parent="."]
-position = Vector2(3, -7.5)
+position = Vector2(3, 1)
 
 [node name="Batery" type="Node2D" parent="."]
-position = Vector2(0, -7.5)
+position = Vector2(0, -1)
 
 [node name="Mechanic" type="Node2D" parent="."]
-position = Vector2(-2.5, 0)
+position = Vector2(-8, 6)
 
 [node name="RepairTimer" type="Timer" parent="."]
 one_shot = true

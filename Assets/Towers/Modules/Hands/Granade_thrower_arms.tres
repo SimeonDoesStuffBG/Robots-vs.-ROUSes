@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=15 format=3 uid="uid://bmcpowdj8drnc"]
+
+[ext_resource type="Script" uid="uid://cgl7mw2mgha6k" path="res://Scripts/Scriptable Objects/Modules/damage.gd" id="1_67woc"]
+[ext_resource type="Resource" uid="uid://ckiyjhgdagba0" path="res://Assets/Towers/Projectiles/granade.tres" id="1_n0yqj"]
+[ext_resource type="Texture2D" uid="uid://dp1edspo17whw" path="res://Assets/Sprites/hands_sheet.png" id="1_osb4t"]
+[ext_resource type="Texture2D" uid="uid://d2thqrvsldc53" path="res://Assets/Sprites/granade_damage_hands_icon.png" id="2_p06tu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4uqi"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4bp4"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_035va"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bfwf"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfuoa"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76jds"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2dgw"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s18s"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wonoo"]
+atlas = ExtResource("1_osb4t")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_id8y2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4uqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4bp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_035va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4bp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4uqi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bfwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfuoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76jds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2dgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s18s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wonoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76jds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfuoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bfwf")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_67woc")
+projectile = ExtResource("1_n0yqj")
+shoot_speed = 5
+range = 20
+energy_drain = 6
+name = "Granade Throwing Arms"
+info = "Arms that throw a granade at the enemies"
+health = 30.0
+price = 16
+cooldown = 3.0
+icon = ExtResource("2_p06tu")
+animation = SubResource("SpriteFrames_id8y2")

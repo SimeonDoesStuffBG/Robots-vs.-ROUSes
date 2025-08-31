@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=12 format=3 uid="uid://c6islnke6gm62"]
+
+[ext_resource type="Script" uid="uid://cgl7mw2mgha6k" path="res://Scripts/Scriptable Objects/Modules/damage.gd" id="1_ke8yy"]
+[ext_resource type="Resource" uid="uid://d0wm8a6wmbp2o" path="res://Assets/Towers/Projectiles/projectile.tres" id="1_rna1w"]
+[ext_resource type="Texture2D" uid="uid://dp1edspo17whw" path="res://Assets/Sprites/hands_sheet.png" id="1_rpori"]
+[ext_resource type="Texture2D" uid="uid://y0gjedamix3n" path="res://Assets/Sprites/small_damage_hands_icon.png" id="2_ymxkn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpjl2"]
+atlas = ExtResource("1_rpori")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st52m"]
+atlas = ExtResource("1_rpori")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiyb8"]
+atlas = ExtResource("1_rpori")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vegko"]
+atlas = ExtResource("1_rpori")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3pib"]
+atlas = ExtResource("1_rpori")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc7yd"]
+atlas = ExtResource("1_rpori")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7w3tc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpjl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st52m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpjl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiyb8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vegko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3pib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc7yd")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_ke8yy")
+projectile = ExtResource("1_rna1w")
+shoot_speed = 1
+range = 20
+energy_drain = 2
+name = "Light Damage hand"
+info = "Hands that do base damage at a decent price"
+health = 30.0
+price = 8
+cooldown = 3.0
+icon = ExtResource("2_ymxkn")
+animation = SubResource("SpriteFrames_7w3tc")

@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Defence" load_steps=8 format=3 uid="uid://nv5jyhtemugy"]
+
+[ext_resource type="Script" uid="uid://cibd3etra5woc" path="res://Scripts/Scriptable Objects/Modules/defence.gd" id="1_dfiea"]
+[ext_resource type="Texture2D" uid="uid://cbv3h6sjt0lwe" path="res://Assets/Sprites/heads_sheet.png" id="1_v02by"]
+[ext_resource type="Texture2D" uid="uid://d3bmv12wp4w6a" path="res://Assets/Sprites/heavy_defence_head.png" id="2_cjhxw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fedo"]
+atlas = ExtResource("1_v02by")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m58uu"]
+atlas = ExtResource("1_v02by")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v513"]
+atlas = ExtResource("1_v02by")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f047m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fedo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m58uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v513")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m58uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fedo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_dfiea")
+wall_health = 500.0
+energy_drain = 10
+name = "Heavy Defence head"
+info = "Heavy defence head. Provides more protection but drains battery faster"
+health = 50.0
+price = 8
+cooldown = 7.0
+icon = ExtResource("2_cjhxw")
+animation = SubResource("SpriteFrames_f047m")

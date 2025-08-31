@@ -1,6 +1,8 @@
 class_name Module
 extends Resource
 
+@export var name:String
+@export var info:String
 @export var health = 10.0
 @export var price = 16
 @export var cooldown = 15.0

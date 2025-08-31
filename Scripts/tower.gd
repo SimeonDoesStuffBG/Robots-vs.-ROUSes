@@ -53,14 +53,13 @@ func build_tower():
 	
 	add_child(head_module)
 	add_child(body_module)
+	add_child(batery_module)
 	add_child(hands_module)
 	add_child(legs_module)
-	add_child(batery_module)
 	add_child(mechanic_module)
 
 func recharge():
 	repair_timer.start(repair_time)
-	print(repair_time)
 	emit_signal("fixing")
 	pass
 

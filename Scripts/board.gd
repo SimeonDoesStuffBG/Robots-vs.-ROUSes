@@ -2,18 +2,20 @@ extends Node2D
 
 @onready var enemy_spawner = $enemy_spawner
 @onready var game_manager = $"../Game Manager"
+@onready var placed_sound = $Placed
 
 const final_line = preload("res://Scenes/final_line.tscn")
 const tile = preload("res://Scenes/tile.tscn")
 
 var node_size = Global.tile_size
-var margin = Global.tile_margin
+var node_margin = Global.tile_margin
 var node_space:float :
 	get:
-		return node_size+margin
+		return node_size+node_margin
 
 @export var height = 5
 @export var width = 9
+
 
 var tower:Tower
 
@@ -47,6 +49,7 @@ func create_tower():
 	self.picked_button.disabled = true
 	self.picked_button.cooldown()
 	self.picked_button = null
+	placed_sound.play()
 	pass
 
 
@@ -65,7 +68,7 @@ func _input(event):
 	pass
 
 func generate_board():
-	var bottom_left = Vector2(-width * node_space / 2, -height * node_space / 2)
+	var bottom_left = Vector2((-width * node_space + node_margin)/ 2 , (-height * node_space + node_margin) / 2 )
 	towerDetectionLimit = bottom_left.x + (width+1) * node_space
 	for i in height:
 		var y_offset = i * node_space

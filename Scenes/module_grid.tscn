@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfhhvykb20uib"]
+
+[ext_resource type="Script" uid="uid://dvf51p3a2hye3" path="res://Scripts/module_grid.gd" id="1_45ub4"]
+
+[node name="Module_Grid" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 280.0
+offset_top = 144.0
+offset_right = -231.0
+offset_bottom = -403.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_45ub4")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.031
+offset_left = 327.0
+offset_right = 957.1
+offset_bottom = 369.869
+columns = 3
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
