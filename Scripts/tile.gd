@@ -3,6 +3,7 @@ extends ColorRect
 const selected_alpha = 0.5
 const unselected_alpha = 0
 @onready var hitbox = $Area2D/CollisionShape2D
+@onready var area_2d: Area2D = $Area2D
 
 var tower
 var has_tower : bool :
@@ -14,8 +15,8 @@ func _ready():
 	self.color.a= unselected_alpha
 	hitbox.shape.size = self.size
 	hitbox.position = Vector2(self.size.x/2, self.size.y/2)
-	self.mouse_entered.connect(_on_area_2d_mouse_entered)
-	self.mouse_exited.connect(_on_area_2d_mouse_exited)
+	area_2d.mouse_entered.connect(_on_area_2d_mouse_entered)
+	area_2d.mouse_exited.connect(_on_area_2d_mouse_exited)
 	pass # Replace with function body.
 
 

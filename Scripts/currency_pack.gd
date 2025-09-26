@@ -28,13 +28,13 @@ func pickup():
 	pass
 
 
-func _on_area_2d_mouse_entered():
-	is_selected = true
+func _on_area_2d_mouse_entered() -> void:
+	self.is_selected = true
 	pass # Replace with function body.
 
 
-func _on_area_2d_mouse_exited():
-	is_selected = false
+func _on_area_2d_mouse_exited() -> void:
+	self.is_selected = false
 	pass # Replace with function body.
 
 

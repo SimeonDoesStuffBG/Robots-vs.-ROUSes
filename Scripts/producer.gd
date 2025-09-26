@@ -18,7 +18,7 @@ func _process(delta):
 
 func produce():
 	var bolts = resource.instantiate()
-	bolts.position = global_position
+	bolts.position = self.global_position
 	bolts.game_manager = get_parent().board.game_manager
 	drain_power(stats.energy_drain)
 	get_parent().board.add_child(bolts)

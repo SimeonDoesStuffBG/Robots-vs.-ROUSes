@@ -31,6 +31,7 @@ func _process(delta):
 
 func set_module(module):
 	self.module=module
+	self.icon = module.icon
 	grid_container.visible = false
 	print(self.module.name)
 

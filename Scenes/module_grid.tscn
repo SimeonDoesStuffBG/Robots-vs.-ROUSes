@@ -12,6 +12,7 @@ offset_right = -231.0
 offset_bottom = -403.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_icon = true
 script = ExtResource("1_45ub4")
 
 [node name="GridContainer" type="GridContainer" parent="."]
